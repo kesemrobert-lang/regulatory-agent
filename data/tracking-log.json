@@ -5,15 +5,19 @@
     "edpb-dpia-2026-04-29-02",
     "edpb-research-2026-04-29-03",
     "garante-cnil-pixel-2026-04-29-04",
-    "cnil-enforcement-2026-04-29-05"
+    "cnil-enforcement-2026-04-29-05",
+    "omnibus-ai-trilogue-fail-2026-04-29-06",
+    "garante-pixel-gazzetta-pending-2026-04-29-07"
   ],
   "ongoing": [
-    "Digital Omnibus AI Act (omnibus-ai-2026-04-29-01): Monitor EU official channels (europarl.europa.eu Legislative Train, EUR-Lex, European Commission press releases) for confirmation of April 28 trilogue outcome. If agreed, track formal Parliament and Council endorsement (May–June) and Official Journal publication (expected July 2026). If not agreed, August 2 high-risk obligations remain live — escalate to critical.",
-    "EDPB DPIA Template (edpb-dpia-2026-04-29-02): Consultation closes June 9, 2026. Track submission of any notable industry or DPA responses. Flag when finalised template is published and national DPAs begin mandatory adoption processes.",
-    "EDPB Guidelines 1/2026 on Scientific Research (edpb-research-2026-04-29-03): Consultation closes June 25, 2026. Track consultation responses and any EDPB clarifications. Flag when finalised.",
-    "Garante email tracking pixel guidelines (garante-cnil-pixel-2026-04-29-04): Monitor Italian Official Gazette (Gazzetta Ufficiale) for publication date — this starts the 6-month Italian compliance clock. CNIL compliance window (~June 12) is approaching; track any CNIL enforcement actions signalling active inspection.",
-    "EDPB 2026 CEF Transparency Action (referenced in cnil-enforcement-2026-04-29-05): 25 DPAs conducting simultaneous review of transparency and information obligations. Track mid-year interim signals and expected H2 2026 EDPB report — likely precursor to enforcement wave.",
-    "EDPB Anonymisation Guidelines sprint team (referenced in omnibus-ai-2026-04-29-01 context): EDPB committed to completing anonymisation guidelines by summer 2026. Critical for AI training and Health Tech clients — monitor for publication.",
-    "Israeli PPA enforcement posture under Amendment 13 (background item): No new primary-source PPA announcement found today. Continue monitoring gov.il/PPA for any AI-specific enforcement guidance, DPO obligation clarifications, or first enforcement actions under the expanded post-August 2025 powers."
+    "omnibus-ai-trilogue-fail-2026-04-29-06 / omnibus-ai-2026-04-29-01 [ESCALATED TO CRITICAL]: Monitor for outcome of ~May 13 follow-up trilogue. If agreed, track formal Parliament and Council endorsement race before July OJ publication target. If still no agreement by mid-June, August 2 deadline is effectively locked — escalate all client advisories. Track Cypriot Presidency deadline (June 30) as final practical window.",
+    "garante-pixel-gazzetta-pending-2026-04-29-07 / garante-cnil-pixel-2026-04-29-04 [UPDATED]: Monitor Gazzetta Ufficiale daily for publication of Provvedimento n. 284 — this triggers the Italian six-month clock. CNIL June 12 three-month window is now under 6 weeks away — flag to E-commerce and SaaS clients immediately. Track first post-deadline enforcement signals from CNIL (expected H2 2026).",
+    "edpb-dpia-2026-04-29-02: Consultation closes June 9, 2026. No new developments today. Continue monitoring EDPB website for consultation responses and finalised template.",
+    "edpb-research-2026-04-29-03: Consultation closes June 25, 2026. No new developments today. Continue monitoring.",
+    "cnil-enforcement-2026-04-29-05 / EDPB 2026 CEF Transparency Action: 25 DPAs reviewing transparency obligations. No mid-cycle signals found today. Monitor for interim EDPB communication or individual DPA enforcement actions signalling inspection focus. Expected H2 2026 EDPB report.",
+    "EDPB Anonymisation Guidelines sprint team: Committed for summer 2026 completion. September 17 plenary is a likely publication venue. Critical for AI training and Health Tech clients — monitor EDPB website.",
+    "Israeli PPA enforcement posture under Amendment 13: No new primary-source PPA announcement found today. Secondary sources confirm PPA has begun lateral market-wide enforcement, including e-commerce and commonly used apps. The April 2025 draft AI Guidelines remain the last official AI-specific PPA document — monitor gov.il/PPA for finalised AI guidelines and first reported enforcement actions under expanded Amendment 13 powers.",
+    "EU AI Act Article 50 Transparency Code of Practice (Synthetic Content / Watermarking): Second draft published March 5, 2026. Final version expected before August 2, 2026. Monitor EU AI Office and digital-strategy.ec.europa.eu for finalisation — directly affects SaaS/AI clients deploying generative AI tools.",
+    "EDPB BCR Opinion volume (April 27 Art. 64 opinions on Jacobs Douwe Egberts, Santander, Kuwait Petroleum Group): Procedural individually, but volume uptick may signal increased BCR adoption as transfer mechanism. Monitor for any guidance on BCR-SCC interplay in light of Omnibus GDPR amendments status."
   ]
 }

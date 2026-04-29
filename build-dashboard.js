@@ -588,8 +588,8 @@ function main() {
 
   // Find all brief JSON files
   const dataDir = path.join(__dirname, 'data');
-  const distDir = path.join(__dirname, 'dist');
-  if (!fs.existsSync(distDir)) fs.mkdirSync(distDir);
+  const docsDir = path.join(__dirname, 'docs');
+  if (!fs.existsSync(docsDir)) fs.mkdirSync(docsDir);
 
   const briefFiles = fs.readdirSync(dataDir)
     .filter(f => f.startsWith('brief-') && f.endsWith('.json'))
@@ -605,24 +605,24 @@ function main() {
     allBriefs.push(brief);
     const html = generateBriefHtml(brief, css);
     const outFile = `brief-${brief.date}.html`;
-    fs.writeFileSync(path.join(distDir, outFile), html, 'utf8');
-    console.log(`✓ Generated dist/${outFile}`);
+    fs.writeFileSync(path.join(docsDir, outFile), html, 'utf8');
+    console.log(`✓ Generated docs/${outFile}`);
   });
 
   // Copy latest as index.html
   const latest = allBriefs[allBriefs.length - 1];
   const latestHtml = generateBriefHtml(latest, css);
-  fs.writeFileSync(path.join(distDir, 'index.html'), latestHtml, 'utf8');
-  console.log(`✓ Generated dist/index.html (latest: ${latest.date})`);
+  fs.writeFileSync(path.join(docsDir, 'index.html'), latestHtml, 'utf8');
+  console.log(`✓ Generated docs/index.html (latest: ${latest.date})`);
 
   // Generate archive
   const archiveHtml = generateArchiveHtml(allBriefs, css);
-  fs.writeFileSync(path.join(distDir, 'archive.html'), archiveHtml, 'utf8');
-  console.log(`✓ Generated dist/archive.html`);
+  fs.writeFileSync(path.join(docsDir, 'archive.html'), archiveHtml, 'utf8');
+  console.log(`✓ Generated docs/archive.html`);
 
   console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log(`Dashboard built successfully.`);
-  console.log(`Open dist/index.html in your browser to preview.`);
+  console.log(`Open docs/index.html in your browser to preview.`);
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 }
 

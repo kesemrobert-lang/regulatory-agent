@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lexwatch — Daily Regulatory Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Heebo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --bg-elevated: #ffffff;
+    --border: #e8e6e0;
+    --border-soft: #f0eeea;
+    --text-primary: #1a1a1a;
+    --text-secondary: #5a5a5a;
+    --text-muted: #8a8a8a;
+    --accent: #1e40af;
+    --accent-soft: #eef2ff;
+    --critical: #991b1b;
+    --critical-soft: #fef2f2;
+    --critical-border: #fecaca;
+    --high: #b45309;
+    --high-soft: #fffbeb;
+    --high-border: #fde68a;
+    --medium: #854d0e;
+    --medium-soft: #fefce8;
+    --radar: #1e40af;
+    --radar-soft: #eff6ff;
+    --success: #166534;
+    --success-soft: #f0fdf4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .app {
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--bg);
+  }
+
+  /* Header */
+  .header {
+    padding: 32px 48px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+  }
+
+  .logo-mark {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .user-info .date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .tab {
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s ease;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+
+  .tab:hover {
+    color: var(--text-primary);
+  }
+
+  .tab.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+  }
+
+  .tab .count {
+    display: inline-block;
+    margin-right: 6px;
+    padding: 1px 7px;
+    background: var(--border-soft);
+    border-radius: 10px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-secondary);
+  }
+
+  .tab.active .count {
+    background: var(--text-primary);
+    color: white;
+  }
+
+  /* Content */
+  .content {
+    padding: 40px 48px;
+  }
+
+  .view { display: none; }
+  .view.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Page Header */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .page-subtitle {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: inherit;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn:hover { border-color: var(--text-muted); }
+
+  .btn-primary {
+    background: var(--text-primary);
+    color: white;
+    border-color: var(--text-primary);
+  }
+
+  .btn-primary:hover { background: #000; }
+
+  .btn-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Exec Summary Box */
+  .exec-summary {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exec-summary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+  }
+
+  .exec-summary-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #a1a1aa;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .exec-summary-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .exec-summary-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #e4e4e7;
+    max-width: 900px;
+  }
+
+  .exec-summary-highlight {
+    margin-top: 20px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.05);
+    border-right: 3px solid var(--accent);
+    border-radius: 4px;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #fff;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--bg-elevated);
+    padding: 22px 24px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-change {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .stat-change.up { color: var(--critical); }
+  .stat-change.down { color: var(--success); }
+
+  /* Sections */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .section-title .priority-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  .priority-indicator.critical { background: var(--critical); }
+  .priority-indicator.high { background: var(--high); }
+  .priority-indicator.medium { background: var(--medium); }
+
+  .section-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Detailed Report Card */
+  .detailed-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .detailed-card.critical { border-right: 4px solid var(--critical); }
+  .detailed-card.high { border-right: 4px solid var(--high); }
+  .detailed-card.medium { border-right: 4px solid var(--medium); }
+
+  .card-top {
+    padding: 24px 28px 16px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .card-badges {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .priority-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .priority-badge.critical { background: var(--critical-soft); color: var(--critical); }
+  .priority-badge.high { background: var(--high-soft); color: var(--high); }
+  .priority-badge.medium { background: var(--medium-soft); color: var(--medium); }
+
+  .confidence-badge {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    background: var(--success-soft);
+    color: var(--success);
+  }
+
+  .confidence-badge.moderate { background: var(--medium-soft); color: var(--medium); }
+
+  .card-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  .card-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .card-sectors {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .sector-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--border-soft);
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .sector-tag.primary {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  /* Card body sections */
+  .card-body {
+    padding: 20px 28px;
+  }
+
+  .body-section {
+    margin-bottom: 24px;
+  }
+
+  .body-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .body-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .body-label-icon {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .body-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+
+  .body-text p {
+    margin-bottom: 12px;
+  }
+
+  .body-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .body-text em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .body-text strong {
+    font-weight: 600;
+  }
+
+  /* Action list */
+  .action-list {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+
+  .action-timeframe {
+    margin-bottom: 16px;
+  }
+
+  .action-timeframe:last-child {
+    margin-bottom: 0;
+  }
+
+  .action-timeframe-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .action-timeframe-title .urgency {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--critical);
+    margin-right: 6px;
+  }
+
+  .action-item {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .action-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin-top: 3px;
+    font-weight: 500;
+  }
+
+  /* Sources */
+  .sources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .source-item {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 6px 10px;
+    background: var(--bg);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .source-item .source-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 11px;
+  }
+
+  .source-item .source-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Business opportunity */
+  .business-note {
+    background: var(--success-soft);
+    border: 1px solid #bbf7d0;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--success);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .business-note-icon {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* Themes card */
+  .theme-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .theme-number {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .theme-title {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-left: 60px;
+    letter-spacing: -0.01em;
+  }
+
+  .theme-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    padding-left: 60px;
+  }
+
+  /* Table */
+  .table-wrapper {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th {
+    padding: 14px 18px;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 13px;
+    vertical-align: top;
+  }
+
+  .table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .table tr:hover td {
+    background: var(--bg);
+  }
+
+  .table-date {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .table-date-upcoming {
+    color: var(--critical);
+  }
+
+  /* Sector matrix */
+  .matrix-row {
+    display: grid;
+    grid-template-columns: 160px 140px 1fr 80px;
+    gap: 20px;
+    padding: 16px 20px;
+    align-items: center;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .matrix-row:last-child { border-bottom: none; }
+
+  .matrix-header {
+    background: var(--bg);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .matrix-risk-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .risk-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .risk-dot.critical { background: var(--critical); }
+  .risk-dot.high { background: var(--high); }
+  .risk-dot.medium { background: var(--medium); }
+
+  .risk-label {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .risk-label.critical { color: var(--critical); }
+  .risk-label.high { color: var(--high); }
+  .risk-label.medium { color: var(--medium); }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-right: 24px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    right: -23px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--text-muted);
+  }
+
+  .timeline-item.active::before {
+    background: var(--critical);
+    border-color: var(--critical);
+  }
+
+  .timeline-date {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-title {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 3px 0;
+  }
+
+  .timeline-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  /* Key Messages */
+  .message-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-right: 3px solid var(--accent);
+  }
+
+  .message-for {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .message-body {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text-primary);
+  }
+
+  .message-body::before {
+    content: '"';
+    font-size: 28px;
+    color: var(--accent);
+    margin-left: 4px;
+    vertical-align: -8px;
+  }
+
+  .message-body::after {
+    content: '"';
+    font-size: 28px;
+    color: var(--accent);
+    margin-right: 4px;
+    vertical-align: -8px;
+  }
+
+  /* Dashboard grid */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .side-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  .side-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .side-card-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Methodology */
+  .methodology-box {
+    background: var(--bg-elevated);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .methodology-box strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Print mode */
+  @media print {
+    .header, .btn-group { display: none; }
+    .content { padding: 0; }
+    .detailed-card { page-break-inside: avoid; }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .matrix-row { grid-template-columns: 1fr; gap: 8px; padding: 12px; }
+    .content { padding: 24px; }
+    .header { padding: 20px 24px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div class="logo">Lex<span class="logo-mark">·</span>Watch</div>
+      <div class="user-info">
+        <span class="date">Daily Brief · Apr 18, 2026 · 09:42</span>
+        <div class="avatar">RH</div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('overview', this)">סקירה</button>
+      <button class="tab" onclick="switchTab('critical', this)">דחוף <span class="count">2</span></button>
+      <button class="tab" onclick="switchTab('high', this)">גבוה <span class="count">2</span></button>
+      <button class="tab" onclick="switchTab('themes', this)">מגמות</button>
+      <button class="tab" onclick="switchTab('calendar', this)">לוח זמנים</button>
+      <button class="tab" onclick="switchTab('clients', this)">לקוחות</button>
+      <button class="tab" onclick="switchTab('messages', this)">מסרים</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- OVERVIEW TAB -->
+    <div class="view active" id="overview">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Daily Regulatory Brief</h1>
+          <div class="page-subtitle">April 18, 2026 · Expanded Edition · Lexwatch Intelligence</div>
+        </div>
+        <div class="btn-group">
+          <button class="btn" onclick="window.print()">ייצא PDF</button>
+          <button class="btn btn-primary">הרץ סריקה חדשה</button>
+        </div>
+      </div>
+
+      <!-- Executive Summary -->
+      <div class="exec-summary">
+        <div class="exec-summary-label">⚡ Executive Summary</div>
+        <h2 class="exec-summary-title">השבוע המכריע: מ"היערכות" ל"אכיפה"</h2>
+        <div class="exec-summary-body">
+          השבוע מסתמן כשבוע משמעותי במיוחד ברגולציית הפרטיות, עם שני מהלכים מרכזיים המשפיעים על כל ארבעת הסקטורים של הלקוחות: (1) ה-EDPB אימץ הנחיות חדשות על עיבוד נתונים למחקר מדעי ופתח את הדרך להנחיות אנונימיזציה סופיות בקיץ, והחליט על מיקוד אכיפה ב-2026 בחובות שקיפות ויידוע; (2) רשות הפרטיות הישראלית החלה את גל פיקוחי הרוחב הראשון מאז תיקון 13 — מגזר הסחר המקוון כבר קיבל מכתבי התראה. בנוסף, ה-EU AI Act מתקרב ל-2.8.2026 עם עמימות סביב ה-Digital Omnibus, אבל חובות השקיפות של Article 50 חלות בכל מקרה.
+        </div>
+        <div class="exec-summary-highlight">
+          מסר מרכזי: תקופת החסד נגמרה. זה רבעון של אכיפה, לא היערכות.
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">פריטים דווחו</div>
+          <div class="stat-value">4</div>
+          <div class="stat-change">מתוך 52 שנסקרו</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Critical</div>
+          <div class="stat-value">2</div>
+          <div class="stat-change up">טיפול מיידי</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">לקוחות מושפעים</div>
+          <div class="stat-value">9</div>
+          <div class="stat-change">מתוך 12 לקוחות פעילים</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">יעילות סינון</div>
+          <div class="stat-value">92%</div>
+          <div class="stat-change down">48 פריטים סוננו</div>
+        </div>
+      </div>
+
+      <!-- Sector Impact Matrix -->
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">Sector Impact Matrix</h2>
+          <span class="section-meta">ארבעת הסקטורים</span>
+        </div>
+        <div class="table-wrapper">
+          <div class="matrix-row matrix-header">
+            <div>סקטור</div>
+            <div>רמת סיכון</div>
+            <div>פריורטי פעולה</div>
+            <div>לקוחות</div>
+          </div>
+          <div class="matrix-row">
+            <div style="font-weight: 600; font-family: 'Fraunces', serif; font-size: 15px;">E-commerce</div>
+            <div class="matrix-risk-bar">
+              <div class="risk-dot critical"></div>
+              <span class="risk-label critical">Critical</span>
+            </div>
+            <div style="font-size: 13px; color: var(--text-secondary);">פיקוחי רוחב של רשות הפרטיות כבר פעילים במגזר</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">2</div>
+          </div>
+          <div class="matrix-row">
+            <div style="font-weight: 600; font-family: 'Fraunces', serif; font-size: 15px;">AI / Machine Learning</div>
+            <div class="matrix-risk-bar">
+              <div class="risk-dot high"></div>
+              <span class="risk-label high">High</span>
+            </div>
+            <div style="font-size: 13px; color: var(--text-secondary);">EDPB Scientific Research + AI Act Aug 2026</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">3</div>
+          </div>
+          <div class="matrix-row">
+            <div style="font-weight: 600; font-family: 'Fraunces', serif; font-size: 15px;">Health Tech</div>
+            <div class="matrix-risk-bar">
+              <div class="risk-dot high"></div>
+              <span class="risk-label high">High</span>
+            </div>
+            <div style="font-size: 13px; color: var(--text-secondary);">EDPB research + EHDS + פיקוח מכוני סקר גנטי</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">2</div>
+          </div>
+          <div class="matrix-row">
+            <div style="font-weight: 600; font-family: 'Fraunces', serif; font-size: 15px;">SaaS / B2B</div>
+            <div class="matrix-risk-bar">
+              <div class="risk-dot medium"></div>
+              <span class="risk-label medium">Medium</span>
+            </div>
+            <div style="font-size: 13px; color: var(--text-secondary);">EU Transparency enforcement + spillover כללי</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Preview of Critical Items -->
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">דחוף — טיפול מיידי<span class="priority-indicator critical"></span></h2>
+          <span class="section-meta" style="cursor: pointer; color: var(--accent);" onclick="switchTabById('critical')">ראה הכל ←</span>
+        </div>
+
+        <div class="detailed-card critical">
+          <div class="card-top">
+            <div class="card-badges">
+              <span class="priority-badge critical">🔴 Critical</span>
+              <span class="confidence-badge">High Confidence</span>
+              <span class="card-number">#01</span>
+              <span class="card-date">10.12.2025 · ongoing</span>
+            </div>
+            <h3 class="card-title">רשות הפרטיות פתחה בפיקוחי רוחב — אתרי מסחר מקוון כבר קיבלו מכתבי התראה</h3>
+            <div class="card-sectors">
+              <span class="sector-tag primary">E-commerce</span>
+              <span class="sector-tag">SaaS</span>
+              <span class="sector-tag">Health Tech</span>
+              <span class="sector-tag">AI/ML</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="body-section">
+              <div class="body-label"><span class="body-label-icon">i</span>תמצית הממצא</div>
+              <div class="body-text">
+                ב-10.12.2025 הודיעה רשות הפרטיות על פתיחת פיקוחי הרוחב הראשונים מאז כניסתו לתוקף של תיקון 13 (14.8.2025). הפיקוחים כוללים חמישה מגזרים: <strong>רשויות מקומיות, חברות סחר אונליין, אפליקציות בשימוש נפוץ, מכוני סקר גנטי, וצהרונים</strong>. אתרי המסחר המקוון הקטנים כבר מקבלים בפועל מכתבי התראה ראשונים.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detailed-card critical">
+          <div class="card-top">
+            <div class="card-badges">
+              <span class="priority-badge critical">🔴 Critical</span>
+              <span class="confidence-badge">High Confidence</span>
+              <span class="card-number">#02</span>
+              <span class="card-date">16.4.2026</span>
+            </div>
+            <h3 class="card-title">EDPB Guidelines 1/2026 — עיבוד נתונים למחקר מדעי</h3>
+            <div class="card-sectors">
+              <span class="sector-tag primary">AI/ML</span>
+              <span class="sector-tag primary">Health Tech</span>
+              <span class="sector-tag">SaaS</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="body-section">
+              <div class="body-label"><span class="body-label-icon">i</span>תמצית הממצא</div>
+              <div class="body-text">
+                ב-16.4.2026, ב-Plenary ה-118 של ה-EDPB, אומצה טיוטה של הנחיות 1/2026 על עיבוד נתונים אישיים למטרות מחקר מדעי. במקביל הוקמה "sprint team" שתסיים עד הקיץ את ההנחיות על אנונימיזציה — שיהיה ה-benchmark למה נחשב anonymous data ומה לא.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="methodology-box">
+        <strong>📊 מתודולוגיה:</strong> Primary sources scanned: EDPB (edpb.europa.eu), EU AI Office, רשות הפרטיות (gov.il), CNIL, ICO, Commission DG Connect. <strong>Secondary sources:</strong> DLA Piper, Sidley Austin, EBN Law, Barnea, Dan-Hay, Shibolet, Hunton, Globes. <strong>Total items reviewed:</strong> 52. <strong>Items meeting relevance threshold:</strong> 4 (92% filter efficiency).
+      </div>
+    </div>
+
+    <!-- CRITICAL TAB -->
+    <div class="view" id="critical">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">פריטים דחופים</h1>
+          <div class="page-subtitle">Critical Priority · דורש טיפול מיידי · 2 פריטים</div>
+        </div>
+      </div>
+
+      <!-- Item #1 -->
+      <div class="detailed-card critical">
+        <div class="card-top">
+          <div class="card-badges">
+            <span class="priority-badge critical">🔴 Critical</span>
+            <span class="confidence-badge">High Confidence</span>
+            <span class="card-number">#01 of 04</span>
+            <span class="card-date">10.12.2025 · ongoing</span>
+          </div>
+          <h3 class="card-title">רשות הפרטיות פתחה בפיקוחי רוחב — אתרי מסחר מקוון כבר קיבלו מכתבי התראה</h3>
+          <div class="card-sectors">
+            <span class="sector-tag primary">E-commerce</span>
+            <span class="sector-tag">SaaS</span>
+            <span class="sector-tag">Health Tech</span>
+            <span class="sector-tag">AI/ML</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">i</span>תמצית הממצא</div>
+            <div class="body-text">
+              ב-10.12.2025 הודיעה רשות הפרטיות על פתיחת פיקוחי הרוחב הראשונים מאז כניסתו לתוקף של תיקון 13 (14.8.2025). הפיקוחים כוללים חמישה מגזרים: <strong>רשויות מקומיות, חברות סחר אונליין, אפליקציות בשימוש נפוץ, מכוני סקר גנטי, וצהרונים</strong>. אתרי המסחר המקוון הקטנים כבר מקבלים בפועל מכתבי התראה ראשונים.
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">§</span>ניתוח מעמיק</div>
+            <div class="body-text">
+              <p><em>מה בדיוק עומד מאחורי זה:</em></p>
+              <p>תיקון 13 הקנה לרשות סמכות להטיל עיצומים כספיים משמעותיים בהליך מנהלי מהיר (בניגוד להליך פלילי ארוך). הרשות יכולה לתבוע <strong>עד 10,000 ₪ ללא הוכחת נזק</strong> למשל עבור: אי-מימוש זכות עיון/תיקון, או איסוף מידע ללא יידוע תקין.</p>
+              <p>קיים מנגנון של "קנסות מתגלגלים" המוכפל לפי מספר האנשים במאגר. ההליך עצמו מתבצע דרך <strong>שאלוני ביקורת</strong> שמופצים במגזר — מענה לקוי עלול להוביל להעברה להליך פלילי או מנהלי מעמיק. הרשות גייסה בחודשים האחרונים עובדים רבים, מה שמגביר את קיבולת האכיפה בפועל.</p>
+
+              <p><em>מי נמצא בסיכון הגבוה ביותר:</em></p>
+              <p>• לקוחות E-commerce (ישירות במוקד הפיקוח הנוכחי)<br>
+              • לקוחות Health Tech (סקר גנטי במוקד; בעתיד צפוי פיקוח בהרחבה על Health Apps)<br>
+              • SaaS שמפעיל אפליקציות מובייל (מוגדר בקטגוריית "אפליקציות בשימוש נפוץ")<br>
+              • לקוחות עם מאגר של 100,000+ בעלי "מידע ברגישות מיוחדת" (ביומטרי, רפואי, מיקום)</p>
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">→</span>Action Plan</div>
+            <div class="action-list">
+
+              <div class="action-timeframe">
+                <div class="action-timeframe-title"><span class="urgency">URGENT</span>השבוע הקרוב (עד 25.4)</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div><strong>מיפוי לקוחות בסיכון:</strong> לזהות את כל לקוחות E-commerce וההזנק עם אפליקציות מובייל — יש 4 כאלה לפי הרישום הפנימי (Medify, ShopSmart, FashionForward, VoxAI)</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div><strong>אודיט מקדים חפוז</strong> לכל אחד מהם: האם יש מסמך הגדרות מאגר עדכני? האם יש מדיניות פרטיות עדכנית ל-2025? האם הוגש דיווח על מאגרי מידע עם 100K+ רגישים?</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div><strong>הכנת "Rapid Response Kit"</strong> — template מענה לשאלון ביקורת אם לקוח יקבל כזה, שיוכל להתאים במהירות</div>
+                </div>
+              </div>
+
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">חודש הקרוב</div>
+                <div class="action-item">
+                  <span class="action-number">04</span>
+                  <div><strong>מיילים ייזומיים ללקוחות E-commerce</strong> — להודיע על הסיכון ולהציע audit</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">05</span>
+                  <div><strong>חיזוק הסכמי DPA עם ספקים</strong> של הלקוחות (תיקון 13 הרחיב משמעותית את הגדרת "מחזיק")</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">06</span>
+                  <div><strong>בדיקת מינוי DPO</strong> — הרשות פרסמה טיוטת הנחיה המדגישה שה-DPO חייב להראות ידע מוכח בתחום</div>
+                </div>
+              </div>
+
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">אופק של 3 חודשים</div>
+                <div class="action-item">
+                  <span class="action-number">07</span>
+                  <div><strong>מעקב שבועי</strong> אחרי פרסום ממצאי הרשות — היא מפרסמת דוחות פומביים שיתנו אינדיקציה על ליקויים חוזרים</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">08</span>
+                  <div><strong>הכנה לגל הפיקוח הבא</strong> — סביר ש-SaaS ו-Fintech יהיו במוקד ב-2027</div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="business-note">
+              <span class="business-note-icon">$</span>
+              <div><strong>הזדמנות עסקית:</strong> זה רגע שבו לקוחות זקוקים באופן דחוף לייעוץ. כדאי לשקול חבילת "Amendment 13 Readiness Audit" מוצרית.</div>
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">*</span>מקורות</div>
+            <div class="sources-list">
+              <div class="source-item">
+                <span>רשות הפרטיות, הודעת פיקוח רוחב, 10.12.2025</span>
+                <span class="source-link">Primary</span>
+              </div>
+              <div class="source-item">
+                <span>דן-חי משרד עו"ד, "פיקוח רוחב לראשונה מאז תיקון 13", 16.12.2025</span>
+                <span class="source-link">hay-law.com</span>
+              </div>
+              <div class="source-item">
+                <span>גלובס, "רשות הפרטיות יוצאת במבצע אכיפה באתרי הסחר", 2026</span>
+                <span class="source-link">globes.co.il</span>
+              </div>
+              <div class="source-item">
+                <span>EBN Law, "היערכות נדרשת לאחר תיקון 13", ינואר 2026</span>
+                <span class="source-link">ebnlaw.co.il</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item #2 -->
+      <div class="detailed-card critical">
+        <div class="card-top">
+          <div class="card-badges">
+            <span class="priority-badge critical">🔴 Critical</span>
+            <span class="confidence-badge">High Confidence</span>
+            <span class="card-number">#02 of 04</span>
+            <span class="card-date">16.4.2026</span>
+          </div>
+          <h3 class="card-title">EDPB Guidelines 1/2026 — עיבוד נתונים למחקר מדעי — משפיע על כל לקוחות AI ו-Health Tech</h3>
+          <div class="card-sectors">
+            <span class="sector-tag primary">AI/ML</span>
+            <span class="sector-tag primary">Health Tech</span>
+            <span class="sector-tag">SaaS</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">i</span>תמצית הממצא</div>
+            <div class="body-text">
+              ב-16.4.2026, ב-Plenary ה-118 של ה-EDPB, אומצה טיוטה של הנחיות 1/2026 על עיבוד נתונים אישיים למטרות מחקר מדעי. במקביל הוקמה "sprint team" שתסיים עד הקיץ את ההנחיות על אנונימיזציה — שיהיה ה-benchmark למה נחשב anonymous data ומה לא.
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">§</span>ניתוח מעמיק</div>
+            <div class="body-text">
+              <p><em>מה מחדש בהנחיות:</em></p>
+              <p>ההנחיות קובעות <strong>שישה מבחנים מצטברים</strong> לקביעה מה הוא "מחקר מדעי" לצורך GDPR:</p>
+              <p>1. גישה שיטתית ומתודית<br>
+              2. עמידה בסטנדרטים אתיים<br>
+              3. יכולת לאימות ושקיפות<br>
+              4. אוטונומיה ועצמאות<br>
+              5. מטרות מחקר ברורות<br>
+              6. פוטנציאל לתרומה לידע קיים או יישום חדש של ידע קיים</p>
+
+              <p><strong>משמעות פרקטית חזקה:</strong> חברות AI שטענו עד כה ש"אימון מודל על מידע אישי הוא מחקר מדעי" יצטרכו להוכיח את כל ששת המבחנים. זה מעלה משמעותית את הרף — במיוחד על "אוטונומיה" ו"תרומה לידע", שמציבים אתגר לאימון מודלים מסחריים.</p>
+
+              <p><em>נקודות חזקות נוספות:</em></p>
+              <p>• <strong>הזכות להישכח:</strong> ההנחיות מבהירות מתי controller יכול לדחות בקשת מחיקה ("likely to render impossible or seriously impair the research")<br>
+              • <strong>הקצאת אחריות:</strong> הנחיות מפורטות איך לחלק אחריות בין שותפים (joint controllers vs processors)<br>
+              • <strong>מידע גנטי:</strong> ה-EDPB מציין שאנונימיזציה של מידע גנטי "נותרת סוגיה לא פתורה" — כלומר, בפועל יש להתייחס אליו תמיד כמידע אישי<br>
+              • <strong>אמצעי הגנה:</strong> רשימה מוגדרת: סביבות עיבוד מאובטחות, PETs, הסדרי סודיות, תנאים לשימוש נוסף</p>
+
+              <p><em>קשר ל-EHDS (European Health Data Space):</em><br>
+              ההנחיות פועלות בסינכרון עם EHDS Regulation, שההוראות המרכזיות שלו חלות מ-מרץ 2029, אבל חברות Life Sciences כבר צריכות להתחיל להיערך כ-data holders וכ-data users.</p>
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">→</span>Action Plan</div>
+            <div class="action-list">
+
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">החודש הקרוב (עד 18.5)</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div><strong>קריאה מעמיקה של ההנחיות</strong> — להוריד את ה-PDF המלא מאתר EDPB ולעבור על הסעיפים הרלוונטיים לכל לקוח</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div><strong>מיפוי לקוחות AI/ML</strong> שמסתמכים על "scientific research" כבסיס משפטי לאימון מודלים — לבחון מחדש האם עומדים ב-6 המבחנים</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div><strong>הערכת חשיפה</strong> ללקוחות Health Tech שעושים שימוש משני במידע רפואי</div>
+                </div>
+              </div>
+
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">שני חודשים הקרובים (עד 25.6)</div>
+                <div class="action-item">
+                  <span class="action-number">04</span>
+                  <div><strong>הגשת תגובה לייעוץ ציבורי</strong> עד 25.6 — הזדמנות אסטרטגית להשפיע. אם יש לקוחות עם עניין ספציפי, כדאי להגיש הערות</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">05</span>
+                  <div><strong>עדכון תבניות DPIA</strong> ללקוחות העוסקים במחקר — לשלב את ששת המבחנים</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">06</span>
+                  <div><strong>בחינת מדיניות retention</strong> של מידע מחקרי — ההנחיות מחייבות "proportionate storage periods"</div>
+                </div>
+              </div>
+
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">אופק של 6 חודשים (עד סוף 2026)</div>
+                <div class="action-item">
+                  <span class="action-number">07</span>
+                  <div><strong>מעקב אחר הנחיות אנונימיזציה</strong> — יתפרסמו בקיץ. זה ה-gating document לכל פרויקט AI שנשען על "anonymized data"</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">08</span>
+                  <div><strong>הכנת playbook</strong> למעבר מ-pseudonymization ל-anonymization אמיתית (EDPB דורש 3 בדיקות: single-out, linkability, inference)</div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="business-note">
+              <span class="business-note-icon">$</span>
+              <div><strong>עבור לקוחות AI/ML בפרט:</strong> חובה להכין DPIA עדכני שמתייחס לששת המבחנים. החברות שבהן מאמנים LLMs על מידע של משתמשים נמצאות בסיכון מיוחד.</div>
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">*</span>מקורות</div>
+            <div class="sources-list">
+              <div class="source-item">
+                <span>EDPB, Guidelines 1/2026 on processing of personal data for scientific research purposes, 16.4.2026</span>
+                <span class="source-link">edpb.europa.eu</span>
+              </div>
+              <div class="source-item">
+                <span>EDPB Press Release, Plenary 118, 16.4.2026</span>
+                <span class="source-link">Primary</span>
+              </div>
+              <div class="source-item">
+                <span>Innovires Legal, "EDPB Guidelines — Anonymization and Pseudonymization", 11.4.2026</span>
+                <span class="source-link">innovires.com</span>
+              </div>
+              <div class="source-item">
+                <span>Sidley Austin, "EHDS Regulation navigation", 14.4.2026</span>
+                <span class="source-link">sidley.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HIGH PRIORITY TAB -->
+    <div class="view" id="high">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">פריטים בעדיפות גבוהה</h1>
+          <div class="page-subtitle">High Priority · טיפול בשבוע-שבועיים הקרובים · 2 פריטים</div>
+        </div>
+      </div>
+
+      <!-- Item #3 -->
+      <div class="detailed-card high">
+        <div class="card-top">
+          <div class="card-badges">
+            <span class="priority-badge high">🟠 High</span>
+            <span class="confidence-badge">High Confidence</span>
+            <span class="card-number">#03 of 04</span>
+            <span class="card-date">Oct 2025 · 2026 focus</span>
+          </div>
+          <h3 class="card-title">EDPB בחר נושא אכיפה 2026: שקיפות וחובת יידוע (Articles 12-14 GDPR)</h3>
+          <div class="card-sectors">
+            <span class="sector-tag primary">כל הסקטורים</span>
+            <span class="sector-tag">E-commerce</span>
+            <span class="sector-tag">SaaS</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">i</span>תמצית הממצא</div>
+            <div class="body-text">
+              ה-EDPB בחר את <strong>שקיפות וחובת יידוע</strong> כנושא האכיפה המתואם (Coordinated Enforcement Framework) ל-2026. כל רשויות ה-DPA ברחבי ה-EU יבצעו במקביל ביקורות על מדיניות פרטיות ועמידה בחובות היידוע — מבנית, תכנית, ובפועל.
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">§</span>ניתוח מעמיק</div>
+            <div class="body-text">
+              <p><em>למה זה משמעותי:</em></p>
+              <p>• זו <strong>פעולה מתואמת</strong> — כל ה-DPAs (CNIL, ICO, Garante, AEPD וכו') בודקים את אותו נושא במקביל<br>
+              • <strong>הגברת אכיפה צפויה</strong> ברבעונים הקרובים — גם סתם ביקורות, וגם קנסות<br>
+              • תקדים Optimove (€1M) מראה שהסיכון אמיתי גם לחברות ישראליות שמחזיקות במידע אירופי</p>
+
+              <p><em>תחומים שיבדקו:</em></p>
+              <p>• בהירות לשונית של מדיניות פרטיות<br>
+              • מתן מידע על מקורות מידע לא-ישירים (Article 14)<br>
+              • שקיפות במצבי tracking, cookies, פלטפורמות, group-wide processes<br>
+              • עדכניות — מדיניות פרטיות שלא עודכנה לחוקים חדשים = red flag</p>
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">→</span>Action Plan</div>
+            <div class="action-list">
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">שבועיים הקרובים</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div><strong>מיפוי מדיניות פרטיות</strong> של כל הלקוחות — מתי עודכנו לאחרונה?</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div><strong>בדיקת שפה</strong> — מדיניות שפרחה בז'רגון משפטי תהיה בסיכון</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div><strong>בדיקת Article 14</strong> — לקוחות שאוספים מידע עקיף (data brokers, enrichment, marketing analytics) במיוחד חשופים</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">04</span>
+                  <div><strong>עדכון עובדים/HR notices</strong> — הרשויות בודקות גם פנים-ארגוני, לא רק customer-facing</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">*</span>מקורות</div>
+            <div class="sources-list">
+              <div class="source-item">
+                <span>Hunton Andrews Kurth, "EDPB Selects Topic for 2026 Coordinated Enforcement", October 2025</span>
+                <span class="source-link">hunton.com</span>
+              </div>
+              <div class="source-item">
+                <span>Ailance, "GDPR audit priorities for 2026", January 2026</span>
+                <span class="source-link">2b-advice.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item #4 -->
+      <div class="detailed-card high">
+        <div class="card-top">
+          <div class="card-badges">
+            <span class="priority-badge high">🟠 High</span>
+            <span class="confidence-badge moderate">Moderate — Omnibus</span>
+            <span class="card-number">#04 of 04</span>
+            <span class="card-date">Deadline: 2.8.2026</span>
+          </div>
+          <h3 class="card-title">EU AI Act — Article 50 transparency (2.8.2026) חל גם אם Omnibus עובר</h3>
+          <div class="card-sectors">
+            <span class="sector-tag primary">AI/ML</span>
+            <span class="sector-tag primary">SaaS</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">i</span>תמצית הממצא</div>
+            <div class="body-text">
+              חובות השקיפות של Article 50 (סימון AI-generated content, deepfakes, chatbots) חלות מ-2.8.2026 ללא דחייה, גם אם ה-Digital Omnibus on AI יעבור. רק החובות של Annex III (high-risk systems) יידחו אולי לדצמבר 2027.
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">§</span>ניתוח מעמיק</div>
+            <div class="body-text">
+              <p><em>מצב עדכני של Omnibus:</em></p>
+              <p>• נמצא בשלב trilogue (Council, Parliament, Commission)<br>
+              • פרלמנט ומועצה מתואמים על תאריכים עיקריים<br>
+              • פרסום צפוי ב-Official Journal: יולי 2026 (אם עובר)</p>
+
+              <p><em>מה חייב להיות מוכן עד 2.8.2026:</em></p>
+              <p>• <strong>Chatbots</strong> — חובה לסמן שמדובר ב-AI<br>
+              • <strong>Deepfakes</strong> — חובה לסמן תוכן סינתטי<br>
+              • <strong>AI-generated content</strong> — יכולת Watermarking טכנית<br>
+              • <strong>Emotion recognition + biometric categorization</strong> — חובת יידוע המשתמש</p>
+
+              <p><em>בעיית מבנה:</em><br>
+              רק 8 מתוך 27 מדינות EU מינו authorities לפי הדדליין. המשמעות: אכיפה בפועל במדינות רבות תהיה חלשה בהתחלה. אבל זה לא מצדיק non-compliance — הרשויות המרכזיות (AI Office) פועלות.</p>
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">→</span>Action Plan</div>
+            <div class="action-list">
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">החודש הקרוב</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div><strong>לקוחות AI/ML</strong> — להעריך איזה מהמוצרים שלהם נופלים תחת Article 50 (chatbots, generative content, biometric)</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div><strong>הכנת Disclosure Templates</strong> למוצרי AI ללקוחות</div>
+                </div>
+              </div>
+
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">שלושה חודשים הקרובים</div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div><strong>התחלת gap analysis</strong> ללקוחות ב-Annex III scope (HR tech, credit scoring, health) — גם אם הדדליין נדחה, זמן ההיערכות לא גדול</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">04</span>
+                  <div><strong>מעקב אחרי Omnibus trilogue</strong> — update חודשי</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">*</span>מקורות</div>
+            <div class="sources-list">
+              <div class="source-item">
+                <span>EU AI Act Tracker, Implementation Timeline</span>
+                <span class="source-link">artificialintelligenceact.eu</span>
+              </div>
+              <div class="source-item">
+                <span>Ovidius Uciu, "EU AI Act 2026: Timeline, Delays & Global Comparison", April 2026</span>
+                <span class="source-link">ovidiusuciu.com</span>
+              </div>
+              <div class="source-item">
+                <span>DLA Piper, "Latest wave of obligations under the EU AI Act", August 2025</span>
+                <span class="source-link">dlapiper.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THEMES TAB -->
+    <div class="view" id="themes">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Key Themes This Week</h1>
+          <div class="page-subtitle">מגמות חוצות סקטורים · ניתוח השבוע</div>
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <span class="theme-number">01</span>
+        <h3 class="theme-title">"סוף תקופת החסד"</h3>
+        <div class="theme-body">
+          גם ב-EU (Omnibus לא יציל, Article 50 בדרך, enforcement מתואם) וגם בישראל (תיקון 13 עובר מתיאוריה לפרקטיקה). יש קונצנזוס רגולטורי שב-2026 מתחילים להעניש, לא ללמד. המסר הרגולטורי בישראל ובאירופה אחיד: תקופת ההיערכות נגמרה. הרשויות מגויסות, הסמכויות פעילות, והפיקוח החל.
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <span class="theme-number">02</span>
+        <h3 class="theme-title">הרף של Scientific Research עולה</h3>
+        <div class="theme-body">
+          ה-EDPB מקשיח משמעותית מה נחשב "מחקר מדעי" לצורך GDPR. זה פגיעה ישירה במודלים העסקיים של חברות AI שהסתמכו על הקלה זו. ששת המבחנים החדשים, במיוחד הדרישה ל"אוטונומיה" ו"תרומה לידע", הופכים את הבסיס המשפטי הזה לפחות זמין לחברות מסחריות — מה שידרוש מעבר לבסיסים משפטיים חלופיים (consent, legitimate interest) עם דרישות משלהן.
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <span class="theme-number">03</span>
+        <h3 class="theme-title">שקיפות ויידוע במוקד</h3>
+        <div class="theme-body">
+          גם EDPB Coordinated Enforcement, גם AI Act Article 50, גם פיקוחי רוחב של רשות הפרטיות — כולם מתמקדים בזכות של ה-data subject לדעת מה נעשה עם המידע שלו. זה מאותת על כיוון מקצועי רחב יותר: הרגולטורים מאמינים שהבעיה המרכזית בעולם הטכנולוגיה היום היא לא מה עושים עם המידע, אלא שהמשתמש לא יודע שעושים את זה. כל לקוח חייב לבחון מחדש את שרשרת השקיפות שלו — ממדיניות פרטיות, דרך הודעות עדכון, ועד סימון AI-generated content.
+        </div>
+      </div>
+    </div>
+
+    <!-- CALENDAR TAB -->
+    <div class="view" id="calendar">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Regulatory Calendar</h1>
+          <div class="page-subtitle">90 הימים הקרובים · Apr 18 → Jul 18, 2026</div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div>
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>תאריך</th>
+                  <th>אירוע</th>
+                  <th>רשות</th>
+                  <th>סקטור</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="table-date table-date-upcoming">25.4.2026</span></td>
+                  <td><strong>Internal deadline:</strong> סיום audit מקדים ללקוחות E-commerce</td>
+                  <td>פנימי</td>
+                  <td><span class="sector-tag">E-commerce</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">15.5.2026</span></td>
+                  <td><strong>Expected:</strong> פרסום ממצאי הרשות הישראלית מהפיקוחים הראשונים</td>
+                  <td>רשות הפרטיות</td>
+                  <td><span class="sector-tag">כל הסקטורים</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">מאי 2026</span></td>
+                  <td>TEHDAS2 EHDS consultations launch (collaboration, data enrichment)</td>
+                  <td>EU Commission</td>
+                  <td><span class="sector-tag">Health Tech</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">1.6.2026</span></td>
+                  <td>EU AI Act — GPAI transparency obligations (full enforcement)</td>
+                  <td>EU AI Office</td>
+                  <td><span class="sector-tag">AI/ML</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">25.6.2026</span></td>
+                  <td><strong>Deadline:</strong> סיום Public Consultation EDPB Research Guidelines</td>
+                  <td>EDPB</td>
+                  <td><span class="sector-tag">AI/ML</span> <span class="sector-tag">Health Tech</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">יולי 2026</span></td>
+                  <td><strong>Expected:</strong> EDPB Anonymization Guidelines Final</td>
+                  <td>EDPB</td>
+                  <td><span class="sector-tag">כל הסקטורים</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date table-date-upcoming">2.8.2026</span></td>
+                  <td>AI Act Article 50 transparency — full compliance</td>
+                  <td>EU AI Office</td>
+                  <td><span class="sector-tag">AI/ML</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date table-date-upcoming">2.8.2026</span></td>
+                  <td>AI Act high-risk obligations (unless Omnibus delay)</td>
+                  <td>EU AI Office</td>
+                  <td><span class="sector-tag">AI/ML</span> <span class="sector-tag">SaaS</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <div class="side-card">
+            <h3 class="side-card-title">Critical Milestones</h3>
+            <div class="side-card-subtitle">אבני דרך קריטיות</div>
+            <div class="timeline">
+              <div class="timeline-item active">
+                <div class="timeline-date">25.4.2026 · 7 days</div>
+                <div class="timeline-title">E-commerce Audit Deadline</div>
+                <div class="timeline-desc">פנימי — להשלים audit מקדים</div>
+              </div>
+              <div class="timeline-item active">
+                <div class="timeline-date">25.6.2026 · 68 days</div>
+                <div class="timeline-title">EDPB Research Guidelines</div>
+                <div class="timeline-desc">סוף public consultation</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2.8.2026 · 106 days</div>
+                <div class="timeline-title">AI Act Article 50</div>
+                <div class="timeline-desc">חובות שקיפות נכנסות לתוקף</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2.8.2026 · 106 days</div>
+                <div class="timeline-title">AI Act High-Risk</div>
+                <div class="timeline-desc">תלוי ב-Omnibus</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLIENTS TAB -->
+    <div class="view" id="clients">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">השפעה על לקוחות</h1>
+          <div class="page-subtitle">9 לקוחות מושפעים מתוך 12</div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>שם לקוח</th>
+              <th>סקטורים</th>
+              <th>רלוונטיות עיקרית</th>
+              <th>סיכון</th>
+              <th>דדליין קרוב</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="font-family: 'Fraunces', serif; font-size: 15px;">Medify Health</strong></td>
+              <td><span class="sector-tag">Health Tech</span><span class="sector-tag">AI/ML</span></td>
+              <td style="font-size: 12px;">EDPB Research + סקר גנטי בפיקוח</td>
+              <td><span class="risk-label critical">● Critical</span></td>
+              <td style="font-family: 'JetBrains Mono', monospace;">25.4.2026</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family: 'Fraunces', serif; font-size: 15px;">StackFlow</strong></td>
+              <td><span class="sector-tag">SaaS</span><span class="sector-tag">AI/ML</span></td>
+              <td style="font-size: 12px;">AI Act + EDPB Research</td>
+              <td><span class="risk-label high">● High</span></td>
+              <td style="font-family: 'JetBrains Mono', monospace;">2.8.2026</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family: 'Fraunces', serif; font-size: 15px;">ShopSmart</strong></td>
+              <td><span class="sector-tag">E-commerce</span></td>
+              <td style="font-size: 12px;">פיקוחי רוחב ישראל (פעיל)</td>
+              <td><span class="risk-label critical">● Critical</span></td>
+              <td style="font-family: 'JetBrains Mono', monospace;">25.4.2026</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family: 'Fraunces', serif; font-size: 15px;">Neuralink Health</strong></td>
+              <td><span class="sector-tag">Health Tech</span><span class="sector-tag">AI/ML</span></td>
+              <td style="font-size: 12px;">EDPB Research + EHDS</td>
+              <td><span class="risk-label critical">● Critical</span></td>
+              <td style="font-family: 'JetBrains Mono', monospace;">25.6.2026</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family: 'Fraunces', serif; font-size: 15px;">DataBridge Pro</strong></td>
+              <td><span class="sector-tag">SaaS</span></td>
+              <td style="font-size: 12px;">Coordinated Enforcement</td>
+              <td><span class="risk-label medium">● Medium</span></td>
+              <td style="font-family: 'JetBrains Mono', monospace;">Q2 2026</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family: 'Fraunces', serif; font-size: 15px;">FashionForward</strong></td>
+              <td><span class="sector-tag">E-commerce</span></td>
+              <td style="font-size: 12px;">פיקוחי רוחב ישראל (פעיל)</td>
+              <td><span class="risk-label critical">● Critical</span></td>
+              <td style="font-family: 'JetBrains Mono', monospace;">25.4.2026</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family: 'Fraunces', serif; font-size: 15px;">VoxAI</strong></td>
+              <td><span class="sector-tag">AI/ML</span><span class="sector-tag">SaaS</span></td>
+              <td style="font-size: 12px;">AI Act Article 50 + EDPB Research</td>
+              <td><span class="risk-label high">● High</span></td>
+              <td style="font-family: 'JetBrains Mono', monospace;">2.8.2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="methodology-box" style="margin-top: 24px;">
+        <strong>הערה:</strong> רמות הסיכון נקבעו על בסיס שילוב של (א) סקטור הלקוח ביחס לפיקוחים פעילים, (ב) קרבה לדדליינים קריטיים, ו-(ג) תלות של המודל העסקי של הלקוח ברגולציה ספציפית (למשל לקוחות שמאמנים LLMs נמצאים בסיכון גבוה מיוחד בגלל Guidelines 1/2026).
+      </div>
+    </div>
+
+    <!-- KEY MESSAGES TAB -->
+    <div class="view" id="messages">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">מסרי מפתח ללקוחות</h1>
+          <div class="page-subtitle">Strategic Messages · טיוטות לעדכון השבוע</div>
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="message-for">ללקוחות E-commerce</div>
+        <div class="message-body">
+          הרשות הישראלית פתחה בפיקוחי רוחב במגזר שלכם. מומלץ לבצע audit פנימי דחוף לפני שמגיע שאלון רשמי.
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="message-for">ללקוחות AI / ML</div>
+        <div class="message-body">
+          ה-EDPB שינה את כללי המשחק על שימוש במידע אישי לאימון מודלים. יש חלון של 70 יום להבין את ההשפעה ולעדכן מדיניות פנימית.
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="message-for">ללקוחות Health Tech</div>
+        <div class="message-body">
+          הנחיות חדשות של EDPB למחקר מדעי משפיעות ישירות על שימוש משני במידע רפואי. במקביל, מכוני סקר גנטי נמצאים בפיקוח אקטיבי של הרשות הישראלית.
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="message-for">ללקוחות SaaS / B2B</div>
+        <div class="message-body">
+          2026 מוגדר כשנת "שקיפות ויידוע" בפעולת אכיפה מתואמת של כל ה-DPAs באירופה. הגיע הזמן לאודיט של מדיניות הפרטיות שלכם.
+        </div>
+      </div>
+
+      <div style="margin-top: 40px; padding: 24px; background: var(--accent-soft); border-radius: 8px; border: 1px solid #c7d2fe;">
+        <h3 style="font-family: 'Fraunces', serif; font-size: 18px; margin-bottom: 12px; color: var(--accent);">📧 המלצה אסטרטגית</h3>
+        <p style="font-size: 14px; line-height: 1.75; color: var(--text-primary);">
+          לשלוח את שני המסרים החשובים ביותר השבוע: (1) ללקוחות E-commerce על פיקוחי רוחב, (2) ללקוחות AI/ML על EDPB Research Guidelines. שניהם דורשים טיפול מיידי ויוצרים הזדמנות עסקית לייעוץ מוגבר.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function switchTabById(tabId) {
+  const buttons = document.querySelectorAll('.tab');
+  const targetButton = Array.from(buttons).find(b => b.getAttribute('onclick').includes(tabId));
+  if (targetButton) switchTab(tabId, targetButton);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Secret keys — NEVER commit these
+.env
+
+# Node dependencies — too large to commit, reinstalled from package.json
+node_modules/
+
+# OS junk
+.DS_Store
+Thumbs.db

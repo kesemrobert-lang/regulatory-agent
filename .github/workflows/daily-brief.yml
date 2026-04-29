@@ -1,0 +1,47 @@
+name: Daily Regulatory Brief
+
+on:
+  # Runs at 11:00 UTC = 14:00 Israel time (summer, UTC+3)
+  # In winter (Nov-Mar, UTC+2) this runs at 13:00 Israel time instead — 1 hour early
+  schedule:
+    - cron: '0 11 * * *'
+
+  # Manual trigger — lets you run it on demand from the GitHub website
+  workflow_dispatch:
+
+jobs:
+  run-brief:
+    runs-on: ubuntu-latest
+
+    # Required so the workflow can commit and push back to the repo
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run regulatory agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node agent.js
+
+      - name: Build dashboard
+        run: node build-dashboard.js
+
+      - name: Commit and push updated brief and dashboard
+        run: |
+          git config user.name "LexWatch Bot"
+          git config user.email "lexwatch@users.noreply.github.com"
+          git add data/ docs/
+          git diff --staged --quiet || git commit -m "chore: daily brief $(date +%Y-%m-%d)"
+          git push

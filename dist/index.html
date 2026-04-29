@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lexwatch — 29 April 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Heebo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --bg-elevated: #ffffff;
+    --border: #e8e6e0;
+    --border-soft: #f0eeea;
+    --text-primary: #1a1a1a;
+    --text-secondary: #5a5a5a;
+    --text-muted: #8a8a8a;
+    --accent: #1e40af;
+    --accent-soft: #eef2ff;
+    --critical: #991b1b;
+    --critical-soft: #fef2f2;
+    --critical-border: #fecaca;
+    --high: #b45309;
+    --high-soft: #fffbeb;
+    --high-border: #fde68a;
+    --medium: #854d0e;
+    --medium-soft: #fefce8;
+    --radar: #1e40af;
+    --radar-soft: #eff6ff;
+    --success: #166534;
+    --success-soft: #f0fdf4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .app {
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--bg);
+  }
+
+  /* Header */
+  .header {
+    padding: 32px 48px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+  }
+
+  .logo-mark {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .user-info .date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .tab {
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s ease;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+
+  .tab:hover {
+    color: var(--text-primary);
+  }
+
+  .tab.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+  }
+
+  .tab .count {
+    display: inline-block;
+    margin-right: 6px;
+    padding: 1px 7px;
+    background: var(--border-soft);
+    border-radius: 10px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-secondary);
+  }
+
+  .tab.active .count {
+    background: var(--text-primary);
+    color: white;
+  }
+
+  /* Content */
+  .content {
+    padding: 40px 48px;
+  }
+
+  .view { display: none; }
+  .view.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Page Header */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .page-subtitle {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: inherit;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn:hover { border-color: var(--text-muted); }
+
+  .btn-primary {
+    background: var(--text-primary);
+    color: white;
+    border-color: var(--text-primary);
+  }
+
+  .btn-primary:hover { background: #000; }
+
+  .btn-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Exec Summary Box */
+  .exec-summary {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exec-summary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+  }
+
+  .exec-summary-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #a1a1aa;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .exec-summary-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .exec-summary-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #e4e4e7;
+    max-width: 900px;
+  }
+
+  .exec-summary-highlight {
+    margin-top: 20px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.05);
+    border-right: 3px solid var(--accent);
+    border-radius: 4px;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #fff;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--bg-elevated);
+    padding: 22px 24px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-change {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .stat-change.up { color: var(--critical); }
+  .stat-change.down { color: var(--success); }
+
+  /* Sections */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .section-title .priority-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  .priority-indicator.critical { background: var(--critical); }
+  .priority-indicator.high { background: var(--high); }
+  .priority-indicator.medium { background: var(--medium); }
+
+  .section-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Detailed Report Card */
+  .detailed-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .detailed-card.critical { border-right: 4px solid var(--critical); }
+  .detailed-card.high { border-right: 4px solid var(--high); }
+  .detailed-card.medium { border-right: 4px solid var(--medium); }
+
+  .card-top {
+    padding: 24px 28px 16px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .card-badges {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .priority-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .priority-badge.critical { background: var(--critical-soft); color: var(--critical); }
+  .priority-badge.high { background: var(--high-soft); color: var(--high); }
+  .priority-badge.medium { background: var(--medium-soft); color: var(--medium); }
+
+  .confidence-badge {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    background: var(--success-soft);
+    color: var(--success);
+  }
+
+  .confidence-badge.moderate { background: var(--medium-soft); color: var(--medium); }
+
+  .card-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  .card-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .card-sectors {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .sector-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--border-soft);
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .sector-tag.primary {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  /* Card body sections */
+  .card-body {
+    padding: 20px 28px;
+  }
+
+  .body-section {
+    margin-bottom: 24px;
+  }
+
+  .body-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .body-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .body-label-icon {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .body-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+
+  .body-text p {
+    margin-bottom: 12px;
+  }
+
+  .body-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .body-text em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .body-text strong {
+    font-weight: 600;
+  }
+
+  /* Action list */
+  .action-list {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+
+  .action-timeframe {
+    margin-bottom: 16px;
+  }
+
+  .action-timeframe:last-child {
+    margin-bottom: 0;
+  }
+
+  .action-timeframe-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .action-timeframe-title .urgency {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--critical);
+    margin-right: 6px;
+  }
+
+  .action-item {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .action-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin-top: 3px;
+    font-weight: 500;
+  }
+
+  /* Sources */
+  .sources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .source-item {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 6px 10px;
+    background: var(--bg);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .source-item .source-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 11px;
+  }
+
+  .source-item .source-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Business opportunity */
+  .business-note {
+    background: var(--success-soft);
+    border: 1px solid #bbf7d0;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--success);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .business-note-icon {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* Themes card */
+  .theme-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .theme-number {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .theme-title {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-left: 60px;
+    letter-spacing: -0.01em;
+  }
+
+  .theme-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    padding-left: 60px;
+  }
+
+  /* Table */
+  .table-wrapper {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th {
+    padding: 14px 18px;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 13px;
+    vertical-align: top;
+  }
+
+  .table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .table tr:hover td {
+    background: var(--bg);
+  }
+
+  .table-date {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .table-date-upcoming {
+    color: var(--critical);
+  }
+
+  /* Sector matrix */
+  .matrix-row {
+    display: grid;
+    grid-template-columns: 160px 140px 1fr 80px;
+    gap: 20px;
+    padding: 16px 20px;
+    align-items: center;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .matrix-row:last-child { border-bottom: none; }
+
+  .matrix-header {
+    background: var(--bg);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .matrix-risk-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .risk-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .risk-dot.critical { background: var(--critical); }
+  .risk-dot.high { background: var(--high); }
+  .risk-dot.medium { background: var(--medium); }
+
+  .risk-label {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .risk-label.critical { color: var(--critical); }
+  .risk-label.high { color: var(--high); }
+  .risk-label.medium { color: var(--medium); }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-right: 24px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    right: -23px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--text-muted);
+  }
+
+  .timeline-item.active::before {
+    background: var(--critical);
+    border-color: var(--critical);
+  }
+
+  .timeline-date {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-title {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 3px 0;
+  }
+
+  .timeline-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  /* Key Messages */
+  .message-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-right: 3px solid var(--accent);
+  }
+
+  .message-for {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .message-body {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text-primary);
+  }
+
+  .message-body::before {
+    content: '"';
+    font-size: 28px;
+    color: var(--accent);
+    margin-left: 4px;
+    vertical-align: -8px;
+  }
+
+  .message-body::after {
+    content: '"';
+    font-size: 28px;
+    color: var(--accent);
+    margin-right: 4px;
+    vertical-align: -8px;
+  }
+
+  /* Dashboard grid */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .side-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  .side-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .side-card-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Methodology */
+  .methodology-box {
+    background: var(--bg-elevated);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .methodology-box strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Print mode */
+  @media print {
+    .header, .btn-group { display: none; }
+    .content { padding: 0; }
+    .detailed-card { page-break-inside: avoid; }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .matrix-row { grid-template-columns: 1fr; gap: 8px; padding: 12px; }
+    .content { padding: 24px; }
+    .header { padding: 20px 24px 0; }
+  }
+
+/* LTR overrides */
+.table th { text-align: left; }
+.exec-summary::before { left: 0; right: auto; }
+.exec-summary-highlight { border-left: 3px solid var(--accent); border-right: none; }
+.message-card { border-left: 3px solid var(--accent); border-right: none; }
+.detailed-card.critical { border-left: 4px solid var(--critical); border-right: none; }
+.detailed-card.high { border-left: 4px solid var(--high); border-right: none; }
+.detailed-card.medium { border-left: 4px solid var(--medium); border-right: none; }
+.theme-number { left: 28px; right: auto; }
+.theme-title, .theme-body { padding-left: 80px; padding-right: 0; }
+.timeline { padding-left: 24px; padding-right: 0; }
+.timeline::before { left: 5px; right: auto; }
+.timeline-item::before { left: -23px; right: auto; }
+.card-number { margin-right: auto; margin-left: 0; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div class="header-top">
+      <div class="logo">Lex<span class="logo-mark">·</span>Watch</div>
+      <div class="user-info">
+        <span class="date">Daily Brief · 29.04.2026 · Updated 29/04/2026, 17:16</span>
+        <div class="avatar">RH</div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('overview',this)">Overview</button>
+      <button class="tab" onclick="switchTab('critical',this)">Critical <span class="count">1</span></button>
+      <button class="tab" onclick="switchTab('high',this)">High <span class="count">3</span></button>
+      <button class="tab" onclick="switchTab('themes',this)">Themes</button>
+      <button class="tab" onclick="switchTab('calendar',this)">Calendar</button>
+      <button class="tab" onclick="switchTab('clients',this)">Sectors</button>
+      <button class="tab" onclick="switchTab('messages',this)">Messages</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="view active" id="overview">
+      <div class="page-header">
+          <div>
+            <h1 class="page-title">Daily Regulatory Brief</h1>
+            <div class="page-subtitle">29 April 2026 · Lexwatch Intelligence</div>
+          </div>
+          <div class="btn-group">
+            <button class="btn" onclick="window.print()">Export PDF</button>
+            <a href="archive.html" class="btn">Archive →</a>
+          </div>
+        </div>
+
+        <div class="exec-summary">
+          <div class="exec-summary-label">⚡ Executive Summary</div>
+          <h2 class="exec-summary-title">Digital Omnibus Trilogue at Decision Point; EDPB Releases DPIA Template and Research Guidelines</h2>
+          <div class="exec-summary-body">The most time-critical development today is that the EU AI Act Digital Omnibus trilogue held its target political agreement meeting yesterday (April 28) in Strasbourg — as of this brief, a confirmed outcome has not been publicly announced, making this a situation to monitor within hours. If agreement is reached, the operative high-risk AI deadline shifts from August 2, 2026 to December 2, 2027, with major compliance planning consequences for all AI/ML and SaaS clients. Separately, the EDPB has published two significant instruments this month that require client attention: the first-ever harmonised EU DPIA template (consultation closes June 9) and Guidelines 1/2026 on scientific research data processing (consultation closes June 25). Additionally, a coordinated Italy–France enforcement initiative on email tracking pixels creates an immediate compliance window for clients running email marketing operations.</div>
+          <div class="exec-summary-highlight">The Digital Omnibus trilogue outcome — potentially announced today or imminently — is the single most consequential regulatory event of 2026 for AI clients; treat August 2 as live until Official Journal publication confirms otherwise.</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Items Reported</div>
+            <div class="stat-value">5</div>
+            <div class="stat-change">of 31 reviewed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Critical</div>
+            <div class="stat-value">1</div>
+            <div class="stat-change up">Immediate action required</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Affected Sectors</div>
+            <div class="stat-value">4</div>
+            <div class="stat-change">active sectors</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Filter Efficiency</div>
+            <div class="stat-value">84%</div>
+            <div class="stat-change down">26 items filtered out</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h2 class="section-title">Sector Impact Matrix</h2>
+            <span class="section-meta">Four Sectors</span>
+          </div>
+          <div class="table-wrapper">
+            <div class="matrix-row matrix-header">
+              <div>Sector</div><div>Risk Level</div><div>Action Priority</div><div>Items</div>
+            </div>
+            <div class="matrix-row">
+            <div style="font-weight:600;font-family:'Fraunces',serif;font-size:15px;">E-commerce</div>
+            <div class="matrix-risk-bar">
+              <div class="risk-dot high"></div>
+              <span class="risk-label high">High</span>
+            </div>
+            <div style="font-size:13px;color:var(--text-secondary);">EDPB Publishes First Harmonised EU DPIA Template — Public Consultation Open Unti…</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:600;">2 items</div>
+          </div>
+          <div class="matrix-row">
+            <div style="font-weight:600;font-family:'Fraunces',serif;font-size:15px;">AI/ML</div>
+            <div class="matrix-risk-bar">
+              <div class="risk-dot critical"></div>
+              <span class="risk-label critical">Critical</span>
+            </div>
+            <div style="font-size:13px;color:var(--text-secondary);">EU AI Act Digital Omnibus — Political Trilogue Agreement Targeted for April 28 (…</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:600;">4 items</div>
+          </div>
+          <div class="matrix-row">
+            <div style="font-weight:600;font-family:'Fraunces',serif;font-size:15px;">Health Tech</div>
+            <div class="matrix-risk-bar">
+              <div class="risk-dot critical"></div>
+              <span class="risk-label critical">Critical</span>
+            </div>
+            <div style="font-size:13px;color:var(--text-secondary);">EU AI Act Digital Omnibus — Political Trilogue Agreement Targeted for April 28 (…</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:600;">4 items</div>
+          </div>
+          <div class="matrix-row">
+            <div style="font-weight:600;font-family:'Fraunces',serif;font-size:15px;">SaaS/B2B</div>
+            <div class="matrix-risk-bar">
+              <div class="risk-dot critical"></div>
+              <span class="risk-label critical">Critical</span>
+            </div>
+            <div style="font-size:13px;color:var(--text-secondary);">EU AI Act Digital Omnibus — Political Trilogue Agreement Targeted for April 28 (…</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:600;">5 items</div>
+          </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h2 class="section-title">Critical — Immediate Action<span class="priority-indicator critical"></span></h2>
+            <span class="section-meta" style="cursor:pointer;color:var(--accent);" onclick="switchTabById('critical')">View all →</span>
+          </div>
+          <div class="detailed-card critical">
+          <div class="card-top">
+            <div class="card-badges">
+              <span class="priority-badge critical">🔴 Critical</span>
+              <span class="confidence-badge ">High Confidence</span>
+            </div>
+            <h3 class="card-title">EU AI Act Digital Omnibus — Political Trilogue Agreement Targeted for April 28 (Outcome Pending Confirmation)</h3>
+            <div class="card-sectors"><span class="sector-tag primary">AI/ML</span>
+              <span class="sector-tag">SaaS/B2B</span>
+              <span class="sector-tag">Health Tech</span></div>
+          </div>
+          <div class="card-body">
+            <div class="body-section">
+              <div class="body-label"><span class="body-label-icon">i</span>Key Finding</div>
+              <div class="body-text">The second and final political trilogue meeting on the Digital Omnibus on AI was scheduled for April 28, 2026 in Strasbourg, with a political agreement anticipated. Both the European Parliament (569–45 vote, March 26) and the Council have converged on fixed postponement dates: December 2, 2027 for stand-alone high-risk AI systems (Annex III) and August 2, 2028 for AI embedded in regulated products (Annex I). However, as of the time of this brief, no official press release confirming a deal has been located — this must be verified within hours. If the Omnibus is not agreed before August 2, 2026, the original high-risk obligations apply as written with no extension.</div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="methodology-box">
+          <strong>📊 Methodology:</strong> Primary sources: EDPB, EU AI Office, Israeli PPA, CNIL, ICO. Secondary sources: IAPP, DLA Piper, Hogan Lovells, WilmerHale. Items reviewed: 31. Items reported: 5 (filter efficiency: 84%).
+        </div>
+    </div>
+    <div class="view" id="critical">
+      <div class="page-header">
+          <div>
+            <h1 class="page-title">Critical Items</h1>
+            <div class="page-subtitle">Critical Priority · Requires immediate attention · 1 item</div>
+          </div>
+        </div>
+        <div class="detailed-card critical">
+        <div class="card-top">
+          <div class="card-badges">
+            <span class="priority-badge critical">🔴 Critical</span>
+            <span class="confidence-badge ">High Confidence</span>
+            <span class="card-number">#01 of 01</span>
+          </div>
+          <h3 class="card-title">EU AI Act Digital Omnibus — Political Trilogue Agreement Targeted for April 28 (Outcome Pending Confirmation)</h3>
+          <div class="card-sectors">
+            <span class="sector-tag primary">AI/ML</span>
+              <span class="sector-tag">SaaS/B2B</span>
+              <span class="sector-tag">Health Tech</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">i</span>Key Finding</div>
+            <div class="body-text">The second and final political trilogue meeting on the Digital Omnibus on AI was scheduled for April 28, 2026 in Strasbourg, with a political agreement anticipated. Both the European Parliament (569–45 vote, March 26) and the Council have converged on fixed postponement dates: December 2, 2027 for stand-alone high-risk AI systems (Annex III) and August 2, 2028 for AI embedded in regulated products (Annex I). However, as of the time of this brief, no official press release confirming a deal has been located — this must be verified within hours. If the Omnibus is not agreed before August 2, 2026, the original high-risk obligations apply as written with no extension.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">§</span>Deep Analysis</div>
+            <div class="body-text">The Digital Omnibus on AI (Commission proposal: November 19, 2025) is the most consequential piece of EU AI legislation in motion. The core effect, if passed in time, is to defer the most operationally burdensome AI Act obligations — Annex III conformity assessments, quality management systems, EU AI database registration, and human oversight mechanisms — by approximately 16 months (August 2026 → December 2027 for stand-alone high-risk systems). Parliament and Council are aligned on: (a) fixed hard dates rather than standards-conditioned dates (Commission's original proposal); (b) a new Article 5 prohibition on AI systems generating non-consensual intimate imagery ('nudifiers'); (c) a 'strict necessity' standard for processing special categories of personal data for bias detection; and (d) simplified but retained registration obligations for self-assessed non-high-risk systems. Key open issues as of the April 28 session include: exact scope of sectoral AI safety integration (Parliament proposes moving Annex I-A product categories into sectoral laws — medtech clients affected), watermarking/synthetic content deadline (Parliament: November 2, 2026; Council: February 2, 2027), and residual GPAI model supervision questions. Critical planning implication: even if the Omnibus passes, Article 50 transparency obligations (chatbot disclosure, AI-generated content labelling) and GPAI model obligations remain active. Clients who have been treating August 2026 as a 'soft' deadline because of the Omnibus must understand that several obligations are NOT moved, and the postponement only benefits those with formally documented compliance preparation underway. The EDPB and EDPS have formally criticised certain simplifications in Joint Opinion 1/2026 (April 24, 2026), signalling that privacy regulators will apply maximum scrutiny to post-Omnibus compliance claims. The legal uncertainty between now and Official Journal publication means the safest compliance posture is to continue against the original August 2 timeline.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">→</span>Action Plan</div>
+            <div class="action-list">
+              <div class="action-timeframe">
+                <div class="action-timeframe-title"><span class="urgency">URGENT</span>This Week</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Monitor official EU channels (europarl.europa.eu Legislative Train, EUR-Lex, European Commission press releases) for confirmation of April 28 trilogue outcome — check by end of business April 29.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>If agreement is announced: draft a client alert for AI/ML and SaaS clients explaining what moves (Annex III high-risk to Dec 2027), what does NOT move (prohibitions, GPAI model obligations, Article 50 transparency), and what the watermarking deadline will be.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>If NO agreement is announced: flag August 2, 2026 as live — immediately assess which clients have high-risk AI systems deployed or in development with no compliance documentation.</div>
+                </div>
+              </div>
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">This Month</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Regardless of Omnibus outcome: complete AI system classification exercises for all AI/ML clients — identify which systems fall under Annex III (HR, credit scoring, biometric, critical infrastructure, education, law enforcement use cases).</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Advise Health Tech clients on intersection between AI Act medical device sectoral debate and their specific product footprint — the Parliament's Annex I-A sectoral integration proposal, if adopted, could shift compliance responsibility.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>Review all client AI vendor contracts for AI Act pass-through obligations (Article 26 deployer duties, Article 13 provider transparency obligations needed for DPIA compliance).</div>
+                </div>
+              </div>
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">3-Month Outlook</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Once Omnibus text is in the Official Journal (expected July 2026): update AI Act compliance roadmaps for all affected clients with revised dates and any new obligations introduced by Omnibus amendments.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Build or update AI governance documentation: risk management system, data governance procedures, technical documentation, logging — even under the extended timeline, these are prerequisites for eventual conformity assessment.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>For SaaS clients deploying AI in HR or customer-facing contexts: prepare for Article 50 transparency obligations (chatbot disclosure, AI-generated content labelling) which may apply as early as November 2026 depending on final watermarking deadline.</div>
+                </div>
+              </div>
+            </div>
+            <div class="business-note">
+              <span class="business-note-icon">$</span>
+              <div><strong>Business Opportunity:</strong> Clients who have proactively built AI governance documentation during the preparation period gain a 12–16 month competitive advantage in trusted deployment — position this as a selling point in B2B AI contracting. Offer AI Act compliance readiness assessments now, before the Official Journal publication triggers a compliance rush.</div>
+            </div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">*</span>Sources</div>
+            <div class="sources-list">
+              <div class="source-item">
+              <span>European Parliament Legislative Train — Digital Omnibus on AI</span>
+              <a href="https://www.europarl.europa.eu/legislative-train/package-digital-package/file-digital-omnibus-on-ai" target="_blank" class="source-link">www.europarl.europa.eu</a>
+            </div>
+            <div class="source-item">
+              <span>A&amp;O Shearman — EU AI Omnibus: Key Issues as Trilogue Negotiations Begin</span>
+              <a href="https://www.aoshearman.com/en/insights/digital-omnibus-on-ai-what-is-really-on-the-table-as-trilogues-begin" target="_blank" class="source-link">www.aoshearman.com</a>
+            </div>
+            <div class="source-item">
+              <span>Ropes &amp; Gray — AI Omnibus: Trilogue Underway</span>
+              <a href="https://www.ropesgray.com/en/insights/viewpoints/102mquz/ai-omnibus-trilogue-underwaywhat-to-expect-as-negotiations-progress" target="_blank" class="source-link">www.ropesgray.com</a>
+            </div>
+            <div class="source-item">
+              <span>CDT Europe AI Bulletin — April 2026</span>
+              <a href="https://cdt.org/insights/cdt-europes-ai-bulletin-april-2026/" target="_blank" class="source-link">cdt.org</a>
+            </div>
+            <div class="source-item">
+              <span>EDPB-EDPS Joint Opinion 1/2026 on Digital Omnibus on AI</span>
+              <a href="https://www.edpb.europa.eu/our-work-tools/our-documents/edpbedps-joint-opinion/edpb-edps-joint-opinion-12026-proposal_en" target="_blank" class="source-link">www.edpb.europa.eu</a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view" id="high">
+      <div class="page-header">
+          <div>
+            <h1 class="page-title">High Priority Items</h1>
+            <div class="page-subtitle">High Priority · Address within 1–2 weeks · 3 items</div>
+          </div>
+        </div>
+        <div class="detailed-card high">
+        <div class="card-top">
+          <div class="card-badges">
+            <span class="priority-badge high">🟠 High</span>
+            <span class="confidence-badge ">High Confidence</span>
+            <span class="card-number">#01 of 03</span>
+          </div>
+          <h3 class="card-title">EDPB Publishes First Harmonised EU DPIA Template — Public Consultation Open Until June 9, 2026</h3>
+          <div class="card-sectors">
+            <span class="sector-tag primary">SaaS/B2B</span>
+              <span class="sector-tag">AI/ML</span>
+              <span class="sector-tag">Health Tech</span>
+              <span class="sector-tag">E-commerce</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">i</span>Key Finding</div>
+            <div class="body-text">On April 14, 2026, the EDPB published the first-ever harmonised Data Protection Impact Assessment (DPIA) template (Version 1.0, adopted March 10, 2026), accompanied by an explanatory 'Explainer' document. The template is currently voluntary, but following the June 9 consultation close, all EU and EEA national DPAs will be required to adopt it as their sole standard or as a meta-template to which national templates must align. The template explicitly addresses the intersection with the EU AI Act, including the Article 26(9) obligation on AI system deployers to use provider-supplied information when fulfilling their DPIA obligations under GDPR Article 35.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">§</span>Deep Analysis</div>
+            <div class="body-text">This is the most operationally significant GDPR compliance tool published since the regulation entered into force in 2018. The practical effect for clients operating across multiple EU jurisdictions is significant: until now, DPIAs have been structured differently in France (CNIL's open-source PIA tool), Germany (Standard Data Protection Model), Spain (AEPD guide), and others — creating compliance fragmentation and cross-border audit uncertainty. Once finalised, the EDPB template establishes a minimum documentation standard that all DPAs across the EEA will accept. Key structural features of the template: seven sections (Section 0: processing overview; Section 1: systematic description; Section 2: technical and organisational measures; Section 3: necessity and proportionality; Section 4: risk assessment and action plan; Section 5: consultation; Section 6: DPO opinion and controller sign-off). The template makes a methodological distinction between 'design risk' (inherent in the processing's architecture) and 'incident risk' (operational and security threats) — a conceptual refinement relevant for any client deploying AI or SaaS systems with complex data flows. AI Act integration: Section accommodates the Article 26(9) AI Act obligation, meaning any client deploying a third-party AI system will need to document the provider's Article 13 transparency information within the DPIA. This creates a direct procurement and contract management implication — clients must ensure their AI vendor agreements require delivery of Article 13-compliant documentation. For Health Tech clients processing special category data on a large scale, this template will become the expected standard for any DPA audit or prior consultation request. The consultation is an opportunity to submit feedback that shapes the final template — practically valuable for clients whose processing activities are not well-served by the current draft (e.g., complex research platforms, multi-party clinical trial architectures).</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">→</span>Action Plan</div>
+            <div class="action-list">
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">This Week</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Download and review the EDPB DPIA template and Explainer document from edpb.europa.eu.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Compare the template's seven-section structure against clients' existing DPIA formats to identify gaps — particularly in the design-risk vs. incident-risk distinction and the new AI Act integration section.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>Identify clients whose DPIA practices are most affected (cross-border operators, Health Tech clients, AI deployers) and flag for deeper analysis.</div>
+                </div>
+              </div>
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">This Month</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Prepare a gap analysis memo for key clients: current DPIA format vs. EDPB template requirements.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Consider whether to submit a consultation response by June 9 on behalf of clients or the practice — particularly valuable for Health Tech clients whose research data flows and joint controllership arrangements are not well-addressed in the current draft.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>Begin updating DPIA templates for clients ahead of finalisation — adopt now to avoid a rushed transition after all DPAs mandate it.</div>
+                </div>
+              </div>
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">3-Month Outlook</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Once the template is finalised (post-June 9 consultation), update all client DPIA templates and internal processes to conform.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Integrate the AI Act section into vendor due diligence checklists — require Article 13 documentation from all AI system providers as a contract deliverable.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>Train client DPOs on the new template structure, particularly the design-risk/incident-risk methodology distinction.</div>
+                </div>
+              </div>
+            </div>
+            <div class="business-note">
+              <span class="business-note-icon">$</span>
+              <div><strong>Business Opportunity:</strong> Offer a DPIA template gap analysis service to multi-jurisdictional SaaS and Health Tech clients before the template is finalised. Early adoption signals regulatory sophistication and reduces audit risk. Also creates an opportunity to embed AI Act procurement clauses (Article 13 documentation requirements) into standard vendor agreements.</div>
+            </div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">*</span>Sources</div>
+            <div class="sources-list">
+              <div class="source-item">
+              <span>EDPB — Enhancing compliance and consistency: EDPB adopts DPIA template (April 14, 2026)</span>
+              <a href="https://www.edpb.europa.eu/news/news/2026/enhancing-compliance-and-consistency-edpb-adopts-dpia-template_en" target="_blank" class="source-link">www.edpb.europa.eu</a>
+            </div>
+            <div class="source-item">
+              <span>EDPB — DPIA Template public consultation page</span>
+              <a href="https://www.edpb.europa.eu/our-work-tools/documents/public-consultations/2026/edpb-dpia-template_en" target="_blank" class="source-link">www.edpb.europa.eu</a>
+            </div>
+            <div class="source-item">
+              <span>Reed Smith — One template to rule them all? The EDPB's new DPIA template</span>
+              <a href="https://www.reedsmith.com/our-insights/blogs/viewpoints/102mqej/one-template-to-rule-them-all-the-edpbs-new-dpia-template/" target="_blank" class="source-link">www.reedsmith.com</a>
+            </div>
+            <div class="source-item">
+              <span>iGDPR — EDPB DPIA Template: What It Contains and What Changes</span>
+              <a href="https://www.igdpr.eu/en/edpb-dpia-template-2026/" target="_blank" class="source-link">www.igdpr.eu</a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="detailed-card high">
+        <div class="card-top">
+          <div class="card-badges">
+            <span class="priority-badge high">🟠 High</span>
+            <span class="confidence-badge ">High Confidence</span>
+            <span class="card-number">#02 of 03</span>
+          </div>
+          <h3 class="card-title">EDPB Guidelines 1/2026 on Scientific Research Data Processing — Major Clarifications for Health Tech and AI/ML Clients; Consultation Closes June 25</h3>
+          <div class="card-sectors">
+            <span class="sector-tag primary">Health Tech</span>
+              <span class="sector-tag">AI/ML</span>
+              <span class="sector-tag">SaaS/B2B</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">i</span>Key Finding</div>
+            <div class="body-text">On April 16, 2026, the EDPB adopted Guidelines 1/2026 on the processing of personal data for scientific research purposes — the most significant GDPR research guidance since 2019. The Guidelines clarify when 'broad consent' is permissible (must cover a defined research domain, not generic future purposes), set out six indicative factors for what qualifies as 'scientific research' under GDPR, address the compatibility presumption under Article 5(1)(b), and establish that private entities may conduct qualifying scientific research. The public consultation runs until June 25, 2026. These guidelines are directly relevant to Health Tech clients running real-world evidence studies, AI/ML clients training models on health or research datasets, and SaaS clients providing platforms to research organisations.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">§</span>Deep Analysis</div>
+            <div class="body-text">This is a pivotal document for Health Tech clients. The GDPR has always provided research-specific derogations (Articles 5(1)(b), 9(2)(j), 89), but their practical application has been deeply uncertain — generating compliance paralysis in clinical data reuse, biobank operations, and AI model training on medical data. The Guidelines address several longstanding ambiguities: (1) Scope of 'scientific research': The EDPB introduces six key indicative factors — methodical and systematic approach, adherence to recognised ethical standards, verifiability and transparency, autonomy and independence, objectives contributing to general scientific knowledge, and societal well-being — even where commercial interests are also pursued. Critically, private entities and profit-oriented research can qualify, but the label 'research' is not self-certifying. Activities like 'platform optimisation,' 'proprietary model development,' and 'real-world evidence generation for commercial purposes' face harder scrutiny — these are areas where AI/ML clients training on health data must carefully map their activities against the six factors. (2) Broad consent vs. standard consent: Broad consent remains permissible where research purposes are not fully known at data collection, but the Guidelines tighten this significantly — the consent must cover a defined research area (e.g., 'oncology research'), not generic 'research purposes.' Where future activities fall outside original consent scope, 'dynamic consent' for specific projects is required. This will require review of existing consent forms for Health Tech clients. (3) Compatibility presumption: Where data collected for non-scientific purposes is reused for research, the Article 5(1)(b) compatibility presumption applies. However, data collected for scientific research and reused for non-scientific purposes (e.g., commercial product development) requires a full compatibility assessment — a direct risk for AI companies training models on research datasets. (4) Joint controllership: The EDPB emphasises that active participation in defining a research protocol indicates controller status. Clinical trial sponsors remain controllers (or joint controllers) even if processing only pseudonymised data. This has substantial implications for SaaS platforms providing research infrastructure — they may be joint controllers rather than mere processors. (5) Individual rights limitations: The Guidelines clarify when the right to erasure and right to object can be legitimately restricted — erasure requests can be rejected when erasure would 'seriously impair' research objectives, but this must be documented. These are currently in draft/consultation status and may be modified before finalisation.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">→</span>Action Plan</div>
+            <div class="action-list">
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">This Week</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Download Guidelines 1/2026 from edpb.europa.eu and circulate to Health Tech and AI/ML clients with a brief highlighting the six scientific research factors and the tightened broad consent requirements.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Identify Health Tech clients conducting real-world evidence studies, biobank activities, or AI training on patient data — these are the highest-priority clients for immediate review.</div>
+                </div>
+              </div>
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">This Month</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Audit consent forms and privacy notices for Health Tech clients — assess whether existing 'broad consent' language meets the Guidelines' requirement for a defined research domain with adequate safeguards.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Review data processing agreements for SaaS clients providing research platforms — assess whether controller/processor classification should be re-examined in light of joint controllership guidance.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>Identify AI/ML clients using health or research datasets for model training — analyse whether their activities qualify as 'scientific research' under the six indicative factors or face compatibility assessment obligations.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">04</span>
+                  <div>Consider submitting a consultation response by June 25 on behalf of Health Tech clients, particularly on the treatment of private commercial research and AI model training.</div>
+                </div>
+              </div>
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">3-Month Outlook</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Update DPIA templates, RoPA entries, and privacy notices for research-active clients to reflect the finalised Guidelines once adopted.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Implement dynamic consent mechanisms for Health Tech clients where existing broad consent may not cover future research activities.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>Develop a client guidance note on the research derogations framework once the Guidelines are finalised, targeting both Health Tech and AI/ML clients.</div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">*</span>Sources</div>
+            <div class="sources-list">
+              <div class="source-item">
+              <span>EDPB — Guidelines 1/2026 on scientific research (April 16, 2026)</span>
+              <a href="https://www.edpb.europa.eu/news/news/2026/edpb-brings-clarity-data-processing-scientific-research-speeds-finalisation_en" target="_blank" class="source-link">www.edpb.europa.eu</a>
+            </div>
+            <div class="source-item">
+              <span>DLA Piper — EDPB Guidelines on Scientific Research: Key Implications for the Life Sciences Sector</span>
+              <a href="https://www.dlapiper.com/en/insights/publications/2026/04/edpb-guidelines-on-scientific-research" target="_blank" class="source-link">www.dlapiper.com</a>
+            </div>
+            <div class="source-item">
+              <span>MyData Trust — EDPB Scientific Research Guidelines 2026 Explained</span>
+              <a href="https://www.mydata-trust.com/2026/04/23/scientific-research-edpb-2026/" target="_blank" class="source-link">www.mydata-trust.com</a>
+            </div>
+            <div class="source-item">
+              <span>iGDPR — GDPR and Scientific Research: EDPB Guidelines 2026</span>
+              <a href="https://www.igdpr.eu/en/personal-data-scientific-research-edpb-guidelines-2026/" target="_blank" class="source-link">www.igdpr.eu</a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="detailed-card high">
+        <div class="card-top">
+          <div class="card-badges">
+            <span class="priority-badge high">🟠 High</span>
+            <span class="confidence-badge ">High Confidence</span>
+            <span class="card-number">#03 of 03</span>
+          </div>
+          <h3 class="card-title">Garante and CNIL Issue Coordinated Guidelines on Email Tracking Pixels — Compliance Windows Now Running</h3>
+          <div class="card-sectors">
+            <span class="sector-tag primary">E-commerce</span>
+              <span class="sector-tag">SaaS/B2B</span>
+              <span class="sector-tag">Health Tech</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">i</span>Key Finding</div>
+            <div class="body-text">On April 17, 2026, the Italian Garante adopted Guidelines on the use of tracking pixels in email communications (pending Official Gazette publication). France's CNIL had previously issued a Recommendation on the same topic on March 12, 2026. Both authorities treat tracking pixels in email as terminal access tools subject to the ePrivacy Directive, requiring prior consent. The CNIL compliance window is three months from March 12 (deadline: approximately June 12, 2026). The Garante grants six months from Official Gazette publication. A key Garante innovation is the right to granular consent withdrawal — users must be able to opt out of pixel tracking specifically while continuing to receive emails.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">§</span>Deep Analysis</div>
+            <div class="body-text">This coordinated enforcement initiative directly affects any client using email marketing platforms that include open/click tracking — which encompasses virtually all SaaS/B2B, E-commerce, and Health Tech clients operating in Italy or France. The near-simultaneous publication by two of the EU's most active DPAs signals a coordinated enforcement trend, likely linked to the EDPB's 2026 CEF action on transparency obligations. The legal basis: both authorities characterise email tracking pixels as tools that access information stored on the recipient's device (i.e., the act of the email client rendering the pixel causes a network request), bringing them within the scope of Article 5(3) of the ePrivacy Directive as transposed in France (Article L.34-5 CPCE) and Italy. This analysis is parallel to the treatment of website cookies. The Garante's most significant innovation is granular consent withdrawal: data subjects must be able to opt out of pixel tracking while continuing to receive email communications. This requires a two-layer mechanism in every email footer — a link for unsubscribing from the mailing list AND a separate mechanism for deactivating tracking only. This is more demanding than the CNIL's approach, which requires an accessible withdrawal link but does not require the same level of granularity between list subscription and tracking consent. Practical implications: (1) Email marketing platforms must be configured to honour per-user tracking opt-outs without triggering unsubscription. (2) For emails already in the client's database (CNIL): within approximately six weeks, send a clear information notice to all existing recipients enabling them to object to future tracking. (3) Privacy notices and cookie/tracking policies must be updated. (4) For SaaS clients that provide email functionality as part of their product (e.g., marketing automation, CRM with email), this creates a product compliance obligation, not just a marketing operations issue — their customers may be subject to these rules. (5) The CNIL deadline of approximately June 12 is operationally tight. Health Tech clients sending health-related email communications face heightened risk given the sensitivity classification of health data. Note: The Garante Guidelines are pending Official Gazette publication — the six-month compliance window has not yet started running. Monitor the Official Gazette for the publication date.</div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">→</span>Action Plan</div>
+            <div class="action-list">
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">This Week</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Alert all clients operating in France and Italy that use email marketing with open/click tracking — CNIL compliance window is approximately six weeks (closes ~June 12, 2026).</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>For SaaS clients that provide email marketing or CRM platforms: assess whether their products support per-user tracking consent independently of list subscription — if not, this is a product development priority.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>Monitor the Italian Official Gazette (Gazzetta Ufficiale) for Garante pixel guidelines publication — this starts the six-month Italian compliance clock.</div>
+                </div>
+              </div>
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">This Month</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>For E-commerce and B2B clients using email marketing tools: audit current email tracking practices and consent mechanisms across all lists.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Review email service provider (ESP) agreements — assess whether the ESP can technically support granular opt-out (tracking opt-out distinct from list unsubscription) as required by the Garante.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>Draft or update privacy notices to disclose email tracking pixel use, legal basis, and data subject rights.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">04</span>
+                  <div>For existing email lists in France: prepare and deploy tracking disclosure notices by approximately June 12.</div>
+                </div>
+              </div>
+              <div class="action-timeframe">
+                <div class="action-timeframe-title">3-Month Outlook</div>
+                <div class="action-item">
+                  <span class="action-number">01</span>
+                  <div>Implement compliant consent and opt-out mechanisms for all email communications to Italian and French recipients.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">02</span>
+                  <div>Assess whether pixel tracking practices in other EU jurisdictions (Netherlands, Germany, Spain) are likely to be targeted next — the coordinated Garante/CNIL action suggests EU-wide convergence is coming.</div>
+                </div>
+                <div class="action-item">
+                  <span class="action-number">03</span>
+                  <div>Update data processing agreements with ESPs to address tracking pixel data flows and consent management.</div>
+                </div>
+              </div>
+            </div>
+            <div class="business-note">
+              <span class="business-note-icon">$</span>
+              <div><strong>Business Opportunity:</strong> Offer a targeted email tracking compliance audit to E-commerce and SaaS/B2B clients with European user bases — this is a fast-moving, deadline-driven matter with a clear deliverable and a short window, making it a natural upsell from ongoing compliance retainers.</div>
+            </div>
+          </div>
+          <div class="body-section">
+            <div class="body-label"><span class="body-label-icon">*</span>Sources</div>
+            <div class="sources-list">
+              <div class="source-item">
+              <span>Gaming Tech Law — Tracking Pixels in Emails: the Italian Garante Guidelines and a Comparison with the French CNIL Recommendations (April 2026)</span>
+              <a href="https://www.gamingtechlaw.com/2026/04/tracking-pixels-in-emails-the-italian-garante-guidelines-and-a-comparison-with-the-french-cnil-recommendations/" target="_blank" class="source-link">www.gamingtechlaw.com</a>
+            </div>
+            <div class="source-item">
+              <span>CNIL — Sanctions and enforcement actions page (reference to 2026 activities)</span>
+              <a href="https://www.cnil.fr/en/investigation-powers-cnil/sanctions-issued-cnil" target="_blank" class="source-link">www.cnil.fr</a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view" id="themes">
+      <div class="page-header">
+          <div>
+            <h1 class="page-title">Key Themes</h1>
+            <div class="page-subtitle">Cross-sector patterns · 29 April 2026</div>
+          </div>
+        </div>
+        <div class="theme-card">
+          <span class="theme-number">01</span>
+          <h3 class="theme-title">EU Is Standardising Compliance Infrastructure While Simultaneously Testing Enforcement Readiness</h3>
+          <div class="theme-body">Three of this brief's five items reflect a single meta-theme: the EU is moving from an era of principle-setting into an era of compliance standardisation and enforcement operationalisation. The harmonised DPIA template ends eight years of format fragmentation. The scientific research guidelines close a decade-long interpretive gap. The Digital Omnibus rationalises the AI Act's implementation architecture. At the same time, the CNIL's recruitment enforcement sweep and the Garante/CNIL pixel coordinated action signal that DPAs are not waiting for perfect frameworks — they are enforcing now, with existing tools, in specific high-risk sectors. Clients who have invested in compliance infrastructure are entering a period where that investment pays off in audit resilience. Clients who have deferred are running out of runway.</div>
+        </div>
+        <div class="theme-card">
+          <span class="theme-number">02</span>
+          <h3 class="theme-title">Email Tracking and Consent Infrastructure: The Next GDPR Enforcement Battleground</h3>
+          <div class="theme-body">The near-simultaneous adoption of email tracking pixel guidelines by both the Garante (Italy) and CNIL (France) — both characterising pixels as ePrivacy-regulated terminal access tools — reflects a convergent regulatory position that is likely to spread across additional DPAs. This mirrors the trajectory of cookie consent enforcement, which began with France and Italy and eventually became an EU-wide enforcement priority. SaaS clients whose products include email tracking functionality, and E-commerce clients relying on email open/click data for marketing automation, face a structural compliance challenge that will only intensify. The Garante's granular consent withdrawal requirement — separate opt-outs for email receipt and tracking — is more demanding than any current commercial ESP product natively supports, creating a near-term product compliance gap.</div>
+        </div>
+        <div class="theme-card">
+          <span class="theme-number">03</span>
+          <h3 class="theme-title">AI Act Compliance: The Gap Between Published Obligations and Enforcement Infrastructure Is the Real Risk</h3>
+          <div class="theme-body">The Digital Omnibus debate and the uneven state of national market surveillance authority designation reveal a structural tension: the AI Act's obligations are legally clear, but the enforcement machinery is not yet in place in most Member States. This creates a false sense of safety for non-compliant clients. The EDPB's Joint Opinion 1/2026 explicitly criticises certain Omnibus simplifications, signalling that privacy regulators — who ARE operational and active — will scrutinise AI system deployments through the GDPR lens even before AI Act enforcement is fully functional. The practical implication: GDPR-based AI enforcement (via DPIA obligations, automated decision-making rules, data minimisation requirements) is happening now, regardless of where the AI Act implementation stands.</div>
+        </div>
+    </div>
+    <div class="view" id="calendar">
+      <div class="page-header">
+          <div>
+            <h1 class="page-title">Regulatory Calendar</h1>
+            <div class="page-subtitle">Upcoming regulatory events and deadlines</div>
+          </div>
+        </div>
+        <div class="dashboard-grid">
+          <div>
+            <div class="table-wrapper">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Date</th><th>Event</th><th>Authority</th><th>Sector</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  <td><span class="table-date">2026-04-29 (today)</span></td>
+                  <td>Digital Omnibus AI Act trilogue political agreement outcome expected — monitor EU institutional channels for announcement</td>
+                  <td>European Parliament / Council of the EU / European Commission</td>
+                  <td><span class="sector-tag">AI/ML</span> <span class="sector-tag">SaaS/B2B</span> <span class="sector-tag">Health Tech</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">~2026-06-12</span></td>
+                  <td>CNIL email tracking pixel Recommendation compliance deadline for existing email lists (3 months from March 12, 2026 publication)</td>
+                  <td>CNIL (France)</td>
+                  <td><span class="sector-tag">E-commerce</span> <span class="sector-tag">SaaS/B2B</span> <span class="sector-tag">Health Tech</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">2026-06-09</span></td>
+                  <td>EDPB harmonised DPIA template public consultation closes — deadline for feedback submissions</td>
+                  <td>EDPB</td>
+                  <td><span class="sector-tag">SaaS/B2B</span> <span class="sector-tag">AI/ML</span> <span class="sector-tag">Health Tech</span> <span class="sector-tag">E-commerce</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">2026-06-25</span></td>
+                  <td>EDPB Guidelines 1/2026 on scientific research public consultation closes</td>
+                  <td>EDPB</td>
+                  <td><span class="sector-tag">Health Tech</span> <span class="sector-tag">AI/ML</span> <span class="sector-tag">SaaS/B2B</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">~2026-07-00</span></td>
+                  <td>Expected Official Journal publication of Digital Omnibus on AI (if political agreement reached April 28) — formal adoption by Parliament and Council in May–June</td>
+                  <td>EU Official Journal</td>
+                  <td><span class="sector-tag">AI/ML</span> <span class="sector-tag">SaaS/B2B</span> <span class="sector-tag">Health Tech</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">2026-08-02</span></td>
+                  <td>EU AI Act: main body of obligations applies (unless Digital Omnibus formally in force before this date, in which case Annex III high-risk deferred to Dec 2, 2027). Article 50 transparency obligations apply regardless of Omnibus outcome under current text.</td>
+                  <td>EU AI Office / National Market Surveillance Authorities</td>
+                  <td><span class="sector-tag">AI/ML</span> <span class="sector-tag">SaaS/B2B</span> <span class="sector-tag">Health Tech</span> <span class="sector-tag">E-commerce</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">~2026-10-00 (6 months post-Official Gazette)</span></td>
+                  <td>Garante email tracking pixel guidelines compliance deadline (6 months from Official Gazette publication — date TBC pending publication)</td>
+                  <td>Garante (Italy)</td>
+                  <td><span class="sector-tag">E-commerce</span> <span class="sector-tag">SaaS/B2B</span> <span class="sector-tag">Health Tech</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">2026-11-02 (Parliament position) / 2027-02-02 (Council position)</span></td>
+                  <td>AI Act Article 50 watermarking/AI-generated content marking deadline — final date depends on Omnibus trilogue outcome</td>
+                  <td>EU AI Office</td>
+                  <td><span class="sector-tag">AI/ML</span> <span class="sector-tag">SaaS/B2B</span> <span class="sector-tag">E-commerce</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">2026-H2 (expected)</span></td>
+                  <td>EDPB CEF 2026 transparency action: findings pooled and report published — likely precursor to national enforcement waves on privacy notice quality</td>
+                  <td>EDPB + 25 national DPAs</td>
+                  <td><span class="sector-tag">SaaS/B2B</span> <span class="sector-tag">AI/ML</span> <span class="sector-tag">Health Tech</span> <span class="sector-tag">E-commerce</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table-date">2026-Summer (EDPB commitment)</span></td>
+                  <td>EDPB anonymisation guidelines finalisation — 'sprint team' committed to completing by summer 2026. Critical for AI training data, Health Tech de-identification, and SaaS data retention practices.</td>
+                  <td>EDPB</td>
+                  <td><span class="sector-tag">AI/ML</span> <span class="sector-tag">Health Tech</span> <span class="sector-tag">SaaS/B2B</span></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="side-card">
+              <h3 class="side-card-title">Critical Milestones</h3>
+              <div class="side-card-subtitle">Key upcoming deadlines</div>
+              <div class="timeline">
+                <div class="timeline-item">
+                <div class="timeline-date">2026-04-29 (today)</div>
+                <div class="timeline-title">Digital Omnibus AI Act trilogue political agreement outcome expected — monitor EU institutional channels for announcement</div>
+                <div class="timeline-desc">European Parliament / Council of the EU / European Commission</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">~2026-06-12</div>
+                <div class="timeline-title">CNIL email tracking pixel Recommendation compliance deadline for existing email lists (3 months from March 12, 2026 publication)</div>
+                <div class="timeline-desc">CNIL (France)</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2026-06-09</div>
+                <div class="timeline-title">EDPB harmonised DPIA template public consultation closes — deadline for feedback submissions</div>
+                <div class="timeline-desc">EDPB</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2026-06-25</div>
+                <div class="timeline-title">EDPB Guidelines 1/2026 on scientific research public consultation closes</div>
+                <div class="timeline-desc">EDPB</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">~2026-07-00</div>
+                <div class="timeline-title">Expected Official Journal publication of Digital Omnibus on AI (if political agreement reached April 28) — formal adoption by Parliament and Council in May–June</div>
+                <div class="timeline-desc">EU Official Journal</div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="view" id="clients">
+      <div class="page-header">
+          <div>
+            <h1 class="page-title">Sector Impact</h1>
+            <div class="page-subtitle">How today's developments affect each practice area · 29 April 2026</div>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Sector</th><th>Relevant Items</th><th>Risk</th><th>Immediate Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td><strong style="font-family:'Fraunces',serif;font-size:15px;">E-commerce</strong></td>
+              <td><span class="sector-tag">🟠 EDPB Publishes First Harmonised EU DPIA …</span><br><span class="sector-tag">🟠 Garante and CNIL Issue Coordinated Guide…</span></td>
+              <td><span class="risk-label high">● High</span></td>
+              <td style="font-size:12px;color:var(--text-secondary);">Download and review the EDPB DPIA template and Explainer doc…</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:'Fraunces',serif;font-size:15px;">AI/ML</strong></td>
+              <td><span class="sector-tag">🔴 EU AI Act Digital Omnibus — Political Tr…</span><br><span class="sector-tag">🟠 EDPB Publishes First Harmonised EU DPIA …</span><br><span class="sector-tag">🟠 EDPB Guidelines 1/2026 on Scientific Res…</span><br><span class="sector-tag">🟡 CNIL Announces 2026 Enforcement Prioriti…</span></td>
+              <td><span class="risk-label critical">● Critical</span></td>
+              <td style="font-size:12px;color:var(--text-secondary);">Monitor official EU channels (europarl.europa.eu Legislative…</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:'Fraunces',serif;font-size:15px;">Health Tech</strong></td>
+              <td><span class="sector-tag">🔴 EU AI Act Digital Omnibus — Political Tr…</span><br><span class="sector-tag">🟠 EDPB Publishes First Harmonised EU DPIA …</span><br><span class="sector-tag">🟠 EDPB Guidelines 1/2026 on Scientific Res…</span><br><span class="sector-tag">🟠 Garante and CNIL Issue Coordinated Guide…</span></td>
+              <td><span class="risk-label critical">● Critical</span></td>
+              <td style="font-size:12px;color:var(--text-secondary);">Monitor official EU channels (europarl.europa.eu Legislative…</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:'Fraunces',serif;font-size:15px;">SaaS/B2B</strong></td>
+              <td><span class="sector-tag">🔴 EU AI Act Digital Omnibus — Political Tr…</span><br><span class="sector-tag">🟠 EDPB Publishes First Harmonised EU DPIA …</span><br><span class="sector-tag">🟠 EDPB Guidelines 1/2026 on Scientific Res…</span><br><span class="sector-tag">🟠 Garante and CNIL Issue Coordinated Guide…</span><br><span class="sector-tag">🟡 CNIL Announces 2026 Enforcement Prioriti…</span></td>
+              <td><span class="risk-label critical">● Critical</span></td>
+              <td style="font-size:12px;color:var(--text-secondary);">Monitor official EU channels (europarl.europa.eu Legislative…</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <div class="view" id="messages">
+      <div class="page-header">
+          <div>
+            <h1 class="page-title">Key Messages for Clients</h1>
+            <div class="page-subtitle">Strategic Messages · Draft updates for review</div>
+          </div>
+        </div>
+        <div class="message-card">
+          <div class="message-for">AI/ML clients</div>
+          <div class="message-body">DRAFT — FOR LAWYER REVIEW BEFORE SENDING. The EU AI Act's high-risk compliance deadline (August 2, 2026) may be extended to December 2027 under the Digital Omnibus package — a political trilogue agreement was targeted for April 28 and the outcome is expected imminently. However, several obligations (prohibited AI practices, GPAI model rules, and likely transparency/disclosure requirements) are NOT affected by any extension; our advice is to continue preparing against the original timeline while we monitor the confirmed outcome and update you within days.</div>
+        </div>
+        <div class="message-card">
+          <div class="message-for">Health Tech clients</div>
+          <div class="message-body">DRAFT — FOR LAWYER REVIEW BEFORE SENDING. The EDPB has published major new guidelines on processing personal data for scientific research (Guidelines 1/2026, consultation open until June 25) — these are the most significant GDPR research guidelines in years and directly affect how you structure consent, data reuse, and multi-party research collaborations. We recommend a review of your existing consent framework and data processing agreements in light of the new guidance; we are happy to walk you through the key implications.</div>
+        </div>
+        <div class="message-card">
+          <div class="message-for">E-commerce and SaaS/B2B clients with email marketing</div>
+          <div class="message-body">DRAFT — FOR LAWYER REVIEW BEFORE SENDING. Italy's Garante and France's CNIL have both issued guidelines requiring explicit consent for email tracking pixels (open/click tracking), treating them similarly to website cookies under the ePrivacy Directive. The French compliance deadline for existing email lists is approximately June 12, 2026 — this is six weeks away. If your business sends tracked marketing emails to recipients in France or Italy, you should review your current practices and email footer opt-out mechanisms promptly; we can advise on the required changes.</div>
+        </div>
+        <div class="message-card">
+          <div class="message-for">SaaS/B2B clients providing HR technology or recruitment platforms</div>
+          <div class="message-body">DRAFT — FOR LAWYER REVIEW BEFORE SENDING. France's CNIL has announced that recruitment data practices — including the use of AI and automated decision-making tools in hiring — are a 2026 enforcement priority, with inspections expected to target large companies and HR technology providers. If your product or your clients' operations include AI-assisted candidate screening or automated ranking in France, we recommend a proactive review of your compliance documentation, privacy notices, and human oversight mechanisms before inspections commence.</div>
+        </div>
+        <div style="margin-top:40px;padding:24px;background:var(--accent-soft);border-radius:8px;border:1px solid #c7d2fe;">
+          <h3 style="font-family:'Fraunces',serif;font-size:18px;margin-bottom:12px;color:var(--accent);">📧 Reminder</h3>
+          <p style="font-size:14px;line-height:1.75;color:var(--text-primary);">
+            All messages are <strong>DRAFTS only</strong> — review and approve before sending to clients.
+          </p>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function switchTabById(tabId) {
+  const btn = Array.from(document.querySelectorAll('.tab')).find(b => b.getAttribute('onclick').includes(tabId));
+  if (btn) switchTab(tabId, btn);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "last_run": "2026-04-29",
+  "items_reported": [
+    "omnibus-ai-2026-04-29-01",
+    "edpb-dpia-2026-04-29-02",
+    "edpb-research-2026-04-29-03",
+    "garante-cnil-pixel-2026-04-29-04",
+    "cnil-enforcement-2026-04-29-05"
+  ],
+  "ongoing": [
+    "Digital Omnibus AI Act (omnibus-ai-2026-04-29-01): Monitor EU official channels (europarl.europa.eu Legislative Train, EUR-Lex, European Commission press releases) for confirmation of April 28 trilogue outcome. If agreed, track formal Parliament and Council endorsement (May–June) and Official Journal publication (expected July 2026). If not agreed, August 2 high-risk obligations remain live — escalate to critical.",
+    "EDPB DPIA Template (edpb-dpia-2026-04-29-02): Consultation closes June 9, 2026. Track submission of any notable industry or DPA responses. Flag when finalised template is published and national DPAs begin mandatory adoption processes.",
+    "EDPB Guidelines 1/2026 on Scientific Research (edpb-research-2026-04-29-03): Consultation closes June 25, 2026. Track consultation responses and any EDPB clarifications. Flag when finalised.",
+    "Garante email tracking pixel guidelines (garante-cnil-pixel-2026-04-29-04): Monitor Italian Official Gazette (Gazzetta Ufficiale) for publication date — this starts the 6-month Italian compliance clock. CNIL compliance window (~June 12) is approaching; track any CNIL enforcement actions signalling active inspection.",
+    "EDPB 2026 CEF Transparency Action (referenced in cnil-enforcement-2026-04-29-05): 25 DPAs conducting simultaneous review of transparency and information obligations. Track mid-year interim signals and expected H2 2026 EDPB report — likely precursor to enforcement wave.",
+    "EDPB Anonymisation Guidelines sprint team (referenced in omnibus-ai-2026-04-29-01 context): EDPB committed to completing anonymisation guidelines by summer 2026. Critical for AI training and Health Tech clients — monitor for publication.",
+    "Israeli PPA enforcement posture under Amendment 13 (background item): No new primary-source PPA announcement found today. Continue monitoring gov.il/PPA for any AI-specific enforcement guidance, DPO obligation clarifications, or first enforcement actions under the expanded post-August 2025 powers."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "regulatory-agent",
+  "version": "1.0.0",
+  "description": "Daily regulatory intelligence for a privacy and technology law practice.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kesemrobert-lang/regulatory-agent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kesemrobert-lang/regulatory-agent/issues"
+  },
+  "homepage": "https://github.com/kesemrobert-lang/regulatory-agent#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.91.1",
+    "dotenv": "^17.4.2"
+  }
+}

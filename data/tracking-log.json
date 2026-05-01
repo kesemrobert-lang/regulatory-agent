@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-04-29",
+  "last_run": "2026-05-01",
   "items_reported": [
     "omnibus-ai-2026-04-29-01",
     "edpb-dpia-2026-04-29-02",
@@ -7,17 +7,24 @@
     "garante-cnil-pixel-2026-04-29-04",
     "cnil-enforcement-2026-04-29-05",
     "omnibus-ai-trilogue-fail-2026-04-29-06",
-    "garante-pixel-gazzetta-pending-2026-04-29-07"
+    "garante-pixel-gazzetta-pending-2026-04-29-07",
+    "garante-pixel-gu-confirmed-2026-05-01-01",
+    "dutch-ap-adm-consultation-2026-05-01-02",
+    "ftc-surveillance-pricing-2026-05-01-03"
   ],
   "ongoing": [
-    "omnibus-ai-trilogue-fail-2026-04-29-06 / omnibus-ai-2026-04-29-01 [ESCALATED TO CRITICAL]: Monitor for outcome of ~May 13 follow-up trilogue. If agreed, track formal Parliament and Council endorsement race before July OJ publication target. If still no agreement by mid-June, August 2 deadline is effectively locked — escalate all client advisories. Track Cypriot Presidency deadline (June 30) as final practical window.",
-    "garante-pixel-gazzetta-pending-2026-04-29-07 / garante-cnil-pixel-2026-04-29-04 [UPDATED]: Monitor Gazzetta Ufficiale daily for publication of Provvedimento n. 284 — this triggers the Italian six-month clock. CNIL June 12 three-month window is now under 6 weeks away — flag to E-commerce and SaaS clients immediately. Track first post-deadline enforcement signals from CNIL (expected H2 2026).",
-    "edpb-dpia-2026-04-29-02: Consultation closes June 9, 2026. No new developments today. Continue monitoring EDPB website for consultation responses and finalised template.",
-    "edpb-research-2026-04-29-03: Consultation closes June 25, 2026. No new developments today. Continue monitoring.",
-    "cnil-enforcement-2026-04-29-05 / EDPB 2026 CEF Transparency Action: 25 DPAs reviewing transparency obligations. No mid-cycle signals found today. Monitor for interim EDPB communication or individual DPA enforcement actions signalling inspection focus. Expected H2 2026 EDPB report.",
-    "EDPB Anonymisation Guidelines sprint team: Committed for summer 2026 completion. September 17 plenary is a likely publication venue. Critical for AI training and Health Tech clients — monitor EDPB website.",
-    "Israeli PPA enforcement posture under Amendment 13: No new primary-source PPA announcement found today. Secondary sources confirm PPA has begun lateral market-wide enforcement, including e-commerce and commonly used apps. The April 2025 draft AI Guidelines remain the last official AI-specific PPA document — monitor gov.il/PPA for finalised AI guidelines and first reported enforcement actions under expanded Amendment 13 powers.",
-    "EU AI Act Article 50 Transparency Code of Practice (Synthetic Content / Watermarking): Second draft published March 5, 2026. Final version expected before August 2, 2026. Monitor EU AI Office and digital-strategy.ec.europa.eu for finalisation — directly affects SaaS/AI clients deploying generative AI tools.",
-    "EDPB BCR Opinion volume (April 27 Art. 64 opinions on Jacobs Douwe Egberts, Santander, Kuwait Petroleum Group): Procedural individually, but volume uptick may signal increased BCR adoption as transfer mechanism. Monitor for any guidance on BCR-SCC interplay in light of Omnibus GDPR amendments status."
+    "omnibus-ai-trilogue-fail-2026-04-29-06 / omnibus-ai-2026-04-29-01 [CRITICAL]: May 13 follow-up trilogue is the next decisive moment. If no agreement, August 2 original deadline locks. If agreed, track Parliament and Council formal endorsement + OJ publication race before August 2. Irish Presidency begins June 30 — this is the last practical window under Cypriot Presidency. Key sticking point: exemption for AI in products already governed by sectoral EU safety legislation (medical devices, machinery, toys).",
+    "garante-pixel-gu-confirmed-2026-05-01-01 / garante-pixel-gazzetta-pending-2026-04-29-07 [UPDATED — GU CONFIRMED]: Italian six-month clock confirmed running from April 29, 2026. Deadline: October 28, 2026. Monitor Garante for supplementary FAQ or updated guidance (notes categories are 'illustrative and subject to update'). Track first enforcement signals post-CNIL June 12 window as indicator of coordinated DPA focus.",
+    "garante-cnil-pixel-2026-04-29-04 / cnil-enforcement-2026-04-29-05: CNIL June 12 three-month window now approximately 42 days away. Monitor CNIL sanctions page for first pixel-related enforcement post-deadline. Coordinate monitoring with Italian deadline above.",
+    "edpb-dpia-2026-04-29-02: DPIA template consultation closes June 9, 2026. No new developments. Continue monitoring EDPB website.",
+    "edpb-research-2026-04-29-03: Scientific research guidelines consultation closes June 25, 2026. No new developments. Continue monitoring EDPB website.",
+    "EDPB Anonymisation Guidelines sprint team: Summer 2026 completion target. September 17 plenary (121st) is most likely publication venue. Monitor edpb.europa.eu. Critical for AI training data and health research clients.",
+    "EU AI Act Article 50 Watermarking Code of Practice [UPDATED]: Second draft published March 5, 2026. Final expected early June 2026 (European Commission confirmed 'early June' target per Kennedy's Law analysis). Working group meetings through May 2026. Article 50 applies August 2 regardless of Omnibus outcome. Monitor digital-strategy.ec.europa.eu for final text.",
+    "Dutch AP ADM Explanation Consultation [NEW — 2026-05-01-02]: Consultation closes May 26, 2026. Verify primary source at autoriteitpersoonsgegevens.nl. Monitor for final guidance publication H2 2026.",
+    "FTC Surveillance Pricing [NEW — 2026-05-01-03]: Monitor FTC enforcement actions page for first surveillance pricing enforcement action (likely 2026-2027 based on 6(b) study timeline). Monitor California AB 2564 legislative progress. Monitor House Oversight Committee hearing schedule for further compelled disclosures.",
+    "Israeli PPA enforcement posture under Amendment 13: No new primary-source PPA announcement. Chambers & Partners 2026 guide confirms PPA is actively enforcing purpose limitation, particularly 'data creep' where consumer data is repurposed for AI development without renewed consent. Monitor gov.il/PPA for finalized AI guidelines and first published enforcement decisions.",
+    "EDPB 2026 CEF Transparency Action (25 DPAs): No mid-cycle interim signal. Continue monitoring for individual DPA enforcement actions signaling inspection focus. Expected H2 2026 EDPB report. CNIL has formally announced transparency as a 2026 enforcement priority (recruitment, REU, sports federations, plus the coordinated EU transparency action).",
+    "EDPB BCR Opinion volume (Art. 64 opinions on Jacobs Douwe Egberts, Santander, Kuwait Petroleum Group — April 27): Procedural individually. Monitor for any published BCR decisions that contain substantive guidance on BCR-SCC interplay relevant to Omnibus GDPR amendment status.",
+    "UK DUAA (Data Use and Access Act): Commenced February 5, 2026. EU adequacy review due 2026 — DUAA divergence from EU GDPR on ADM, cookie consent, and scientific research creates adequacy risk. Monitor European Commission for adequacy review announcement. Formal complaints procedure provision commences June 19, 2026."
   ]
 }

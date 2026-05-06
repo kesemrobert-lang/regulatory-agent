@@ -1,0 +1,407 @@
+{
+  "date": "2026-05-06",
+  "mode": "daily",
+  "executive_summary": {
+    "title": "AI Omnibus May 13 Trilogue in 7 Days — August 2 Deadline Now a Real Compliance Anchor",
+    "body": "The dominant story this week remains the AI Omnibus trilogue collapse of April 28, with the decisive follow-up session now confirmed for May 13, 2026 — seven days away. Multiple authoritative secondary sources corroborate the date, though no formal Council press release has been located confirming it. The August 2, 2026 high-risk deadline remains the only legally operative date. Two near-term operational deadlines surface today: the EU AI Act Article 50 Watermarking Code of Practice is entering its final weeks before a June 2026 publication, and the UK DUAA mandatory data protection complaints regime goes live on June 19, 2026 — 44 days away — with fresh ICO-aligned guidance published yesterday by Sidley Austin. The EDPB's 119th plenary on May 11 (in five days) has not yet published an agenda; given the Board's April 118th plenary discussion of LLM/GenAI good practices, there is a meaningful probability that the May plenary will advance or adopt that document. Israeli PPA enforcement posture under Amendment 13 continues to mature, with the February 2026 final consent opinion now confirmed as a primary-source document warranting client-level advisory work.",
+    "key_message": "Plan against August 2, 2026 as a firm deadline — the May 13 trilogue is the last realistic window for Omnibus relief, and even a deal there requires OJ publication in July to take legal effect before August 2."
+  },
+  "stats": {
+    "items_reviewed": 31,
+    "items_reported": 4,
+    "filter_efficiency": "87%",
+    "affected_clients": 4
+  },
+  "items": [
+    {
+      "id": "omnibus-ai-trilogue-may13-2026-05-06-01",
+      "priority": "critical",
+      "confidence": "high",
+      "title": "AI Omnibus Trilogue Confirmed for May 13 — 7 Days to Decisive Vote, August 2 Legally Operative",
+      "summary": "Multiple authoritative secondary sources confirm a follow-up political trilogue on the Digital Omnibus on AI is scheduled for approximately May 13, 2026, seven days from today, under the Cypriot Council Presidency. The April 28 second trilogue collapsed after roughly twelve hours over the conformity assessment architecture for AI embedded in Annex I regulated products (medical devices, machinery, toys). The August 2, 2026 high-risk deadline remains the only legally operative date: no delay has been formally adopted.",
+      "deep_analysis": "This is a material update to omnibus-ai-trilogue-fail-2026-04-29-06. The May 13 session is the Cypriot Presidency's final realistic opportunity to close the file before its term ends June 30. Sources at Bird & Bird (published May 4) noted 'no date has been formally confirmed' in official channels, but DLA Piper, Modulos.ai, and olegov.substack all corroborate May 13. The single blocking issue is the Annex I conformity assessment architecture: whether AI embedded in regulated products (MDR, IVDR, Machinery Regulation) must additionally comply with AI Act conformity assessment, or whether sectoral product safety law is sufficient. This matters acutely for Health Tech clients whose AI-enabled medical devices sit in this intersection. Four scenarios remain live: (1) Deal closes May 13, Cypriot Presidency (~30% per analyst estimates); (2) Lithuanian Presidency closes in Q3, original August 2 passes without postponement legally in force (~25%); (3) Split deal — Annex I carved off, rest of Omnibus passes (~15%); (4) No deal before August 2 (~30%). In scenarios 2 and 4, the Commission may issue forbearance or transitional guidance, but this is speculative and not legally binding. The EDPB/EDPS Annual Report confirms the Board worked with the Commission on joint guidelines on the AI Act and EU data protection law interplay, targeted for adoption in 2026 — those guidelines are not contingent on Omnibus outcome and will proceed regardless. The Article 50 watermarking obligations and GPAI obligations (Articles 50-55) are also not in substantive dispute and apply August 2, 2026 regardless of Omnibus outcome. For SaaS/B2B clients deploying AI tools in EU contexts: if they have any systems that could be classified as Annex III high-risk (recruitment AI, credit scoring, biometric verification), August 2 is the working deadline. For Health Tech clients with AI-enabled medical devices: the Annex I question is existential — the Omnibus outcome directly determines their regulatory compliance architecture.",
+      "sectors": [
+        "AI/ML",
+        "Health Tech",
+        "SaaS/B2B"
+      ],
+      "action_plan": {
+        "this_week": [
+          "Monitor May 13 trilogue outcome in real time — set alerts on European Parliament Legislative Train Schedule (europarl.europa.eu) and IAPP for immediate reporting.",
+          "Communicate to AI/ML and Health Tech clients that May 13 is decisive and that August 2 planning cannot be deferred regardless of outcome.",
+          "For Health Tech clients with AI-enabled medical devices: flag the Annex I architecture question specifically — their compliance path differs materially depending on trilogue outcome."
+        ],
+        "this_month": [
+          "If May 13 trilogue produces agreement: track formal Parliament and Council endorsement timeline and target OJ publication date in July. Assess whether publication before August 2 is achievable (requires roughly 4-6 weeks for formal adoption process).",
+          "If May 13 fails: issue client alert that August 2 is the binding date and Omnibus relief is unlikely before the deadline.",
+          "Review all AI client systems for Annex III classification under the original AI Act — do not apply Omnibus postponement dates as a planning assumption."
+        ],
+        "three_months": [
+          "If Omnibus passes post-August 2 (under Lithuanian Presidency): advise clients on any Commission forbearance guidance and the transition to new compliance timeline.",
+          "If no deal: support clients in navigating August 2 obligations as originally enacted, including high-risk system registration, technical documentation, and transparency requirements."
+        ]
+      },
+      "sources": [
+        {
+          "name": "DLA Piper GENIE — The Digital AI Omnibus: Proposed deferral of high risk AI obligations under the AI Act",
+          "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2026/The-Digital-AI-Omnibus-Proposed-deferral-of-high-risk-AI-obligations-under-the-AI-Act",
+          "type": "secondary"
+        },
+        {
+          "name": "Bird & Bird — Digital Omnibus on AI Trilogue Stalls Ahead of the AI Act Deadline",
+          "url": "https://www.twobirds.com/en/insights/2026/germany/digital-omnibus-on-ai-trilogue-stalls-ahead-of-the-ai-act-deadline",
+          "type": "secondary"
+        },
+        {
+          "name": "Modulos.ai — Is the EU AI Act Delayed? 2026 Status Check",
+          "url": "https://www.modulos.ai/blog/is-the-eu-ai-act-delayed/",
+          "type": "secondary"
+        },
+        {
+          "name": "European Parliament Legislative Train — Digital Omnibus on AI",
+          "url": "https://www.europarl.europa.eu/legislative-train/package-digital-package/file-digital-omnibus-on-ai",
+          "type": "primary"
+        },
+        {
+          "name": "IAPP — AI Act Omnibus: What just happened and what comes next?",
+          "url": "https://iapp.org/news/a/ai-act-omnibus-what-just-happened-and-what-comes-next",
+          "type": "secondary"
+        }
+      ],
+      "business_opportunity": "Clients who have paused AI compliance work now face a compressed runway. Offering AI Act gap assessments and August 2 readiness reviews is time-sensitive and directly billable. Health Tech clients in particular need Annex I architecture analysis — a distinct advisory product from standard high-risk AI compliance."
+    },
+    {
+      "id": "ai-act-watermark-cop-final-approach-2026-05-06-02",
+      "priority": "high",
+      "confidence": "high",
+      "title": "AI Act Article 50 Watermarking Code of Practice: Final Version Due Within Weeks, Working Groups Completing May 2026",
+      "summary": "The European Commission's Code of Practice on Transparency of AI-Generated Content (Article 50 AI Act) is in its final drafting stage, with the Commission's own website confirming a 'beginning of June' finalization target. Working group meetings are scheduled through May 2026. The second draft was published March 5, 2026. Article 50 transparency obligations apply August 2, 2026 regardless of Omnibus outcome.",
+      "deep_analysis": "This is an update to the ongoing watermarking Code of Practice tracking item. The Commission's digital strategy page confirms the code is expected to be finalized 'by beginning of June this year' and that working group meetings run through May 2026. The second draft introduced a simplified two-layered marking approach (secured metadata plus watermarking), with optional fingerprinting/logging, and requires signatories to provide free, EU-localised, GDPR-compliant detection tools. Critically, adherence to the Code does not constitute conclusive evidence of compliance with Article 50 obligations — it is a benchmark, not a safe harbor. For SaaS and AI/ML clients: any platform that generates AI content (images, video, audio, text) for distribution in the EU must be Article 50-compliant by August 2. This is not deferred by the Omnibus — GPAI obligations including Article 50 were not in substantive dispute during trilogue. The second draft shifts some burden: GPAI model providers are now 'encouraged' rather than required to implement marking at model level, which increases burden on downstream system providers who cannot assume upstream models arrive with built-in watermarking. E-commerce clients using AI-generated product imagery, marketing copy, or synthetic audio are deployers under Article 50(4) and must label deepfakes and public interest text. The Code's 'editorial exemption' (human review with documented reviewer identity and approval date) is the primary compliance pathway for content that passes through editorial control.",
+      "sectors": [
+        "AI/ML",
+        "SaaS/B2B",
+        "E-commerce"
+      ],
+      "action_plan": {
+        "this_week": [
+          "Alert AI/ML and SaaS clients that the final Code of Practice is expected within approximately 4 weeks — this is the definitive technical specification for Article 50 compliance.",
+          "Begin provider/deployer classification exercise for each client: which clients are 'providers' of generative AI systems vs. 'deployers' — obligations differ significantly."
+        ],
+        "this_month": [
+          "Upon Code finalization (expected June 2026): distribute client alert with specific technical obligations mapped to client use cases.",
+          "For E-commerce clients using AI-generated imagery or copy: assess whether editorial exemption applies and implement documentation processes (reviewer identity, approval date logs).",
+          "For SaaS clients integrating GPAI models (e.g., OpenAI, Mistral) into their products: assess upstream watermarking capabilities and whether contractual obligations to downstream deployers need updating."
+        ],
+        "three_months": [
+          "By August 2, 2026: confirm all relevant clients have Article 50-compliant marking and detection infrastructure in place.",
+          "Monitor which major AI providers sign the Code — signatories will effectively set the de facto technical standard (C2PA likely to emerge as primary metadata standard)."
+        ]
+      },
+      "sources": [
+        {
+          "name": "European Commission — Commission publishes second draft Code of Practice on Marking and Labelling of AI-generated content",
+          "url": "https://digital-strategy.ec.europa.eu/en/library/commission-publishes-second-draft-code-practice-marking-and-labelling-ai-generated-content",
+          "type": "primary"
+        },
+        {
+          "name": "European Commission — Code of Practice on marking and labelling of AI-generated content (main page)",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content",
+          "type": "primary"
+        },
+        {
+          "name": "Lexology / Cooley — EU AI Act: Second Draft of Code of Practice on Transparency and Watermarking Published",
+          "url": "https://www.lexology.com/library/detail.aspx?g=bcf2c7e1-b3b0-4d4f-984f-ea761f5bcf0e",
+          "type": "secondary"
+        }
+      ],
+      "business_opportunity": "Clients integrating third-party AI models into their products face a novel contractual gap: the second draft shifts marking obligations to downstream system providers when GPAI model providers do not mark at model level. Reviewing and updating AI vendor agreements to address watermarking pass-through obligations is an immediate advisory opportunity."
+    },
+    {
+      "id": "uk-duaa-complaints-regime-2026-05-06-03",
+      "priority": "high",
+      "confidence": "high",
+      "title": "UK DUAA Mandatory Data Protection Complaints Regime: 44 Days to June 19 Deadline — Fresh Guidance Published Yesterday",
+      "summary": "The UK Data (Use and Access) Act 2025 mandatory data protection complaints procedure takes effect June 19, 2026 — 44 days away. From that date, every UK data controller must operate a formal, accessible complaints process as a statutory prerequisite before data subjects can escalate to the ICO. Sidley Austin published a detailed compliance guide on May 5, 2026 (yesterday). No exemptions apply; all UK-subject controllers are covered.",
+      "deep_analysis": "This is a net-new item for this practice's tracking. The DUAA (which received Royal Assent June 19, 2025 and most provisions commenced February 5, 2026) introduces a structural change to the UK complaints landscape via Section 103, inserting new Section 164A into the DPA 2018. From June 19, 2026: (1) data subjects must first raise complaints with the controller before escalating to the ICO; (2) controllers must acknowledge complaints within 30 days; (3) controllers must investigate without undue delay and communicate outcomes; (4) complaints must be accepted through any channel, including social media and informal communications — not only designated forms. The ICO published final guidance on February 12, 2026 ('How to deal with data protection complaints'). Non-compliance exposes controllers to ICO fines of up to £17.5 million or 4% of global annual turnover under UK GDPR, plus reputational risk from ICO publication of enforcement actions. For SaaS/B2B clients with UK customer bases: this is an operational compliance item requiring immediate process review and privacy notice updates. For E-commerce clients: particularly acute given high volume of customer data interactions and the broad definition of 'complaint' (any expression of dissatisfaction about data handling). Note the EU adequacy risk dimension flagged in ongoing tracking: the DUAA's divergence from EU GDPR on ADM, cookie consent, and research creates ongoing EU adequacy review risk, though this complaints regime specifically is actually a consumer-rights strengthening measure that would not itself create adequacy tension.",
+      "sectors": [
+        "SaaS/B2B",
+        "E-commerce",
+        "Health Tech"
+      ],
+      "action_plan": {
+        "this_week": [
+          "Issue advisory to all UK-operating clients about the June 19 deadline and the operational steps required.",
+          "Review ICO February 2026 guidance ('How to deal with data protection complaints') at ico.org.uk for specific compliance requirements."
+        ],
+        "this_month": [
+          "Assist clients in implementing or updating formal data protection complaints procedures to meet Section 164A requirements by June 19.",
+          "Update client privacy notices to reference the right to complain directly to the controller — this must be in place before June 19.",
+          "Train client customer-facing teams to recognize and route data protection complaints from any channel (social media, verbal, informal).",
+          "For regulated clients (fintech, health): map DUAA complaints process against existing FCA or CQC complaints obligations to design an integrated workflow."
+        ],
+        "three_months": [
+          "Post-June 19: monitor ICO enforcement signals for complaints-handling failures — this is an easy enforcement target (process failures are visible and documentable).",
+          "Track DUAA secondary legislation: Section 164B gives Secretary of State power to require complaint volume reporting to ICO — if activated, creates new disclosure obligation."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Sidley Austin Data Matters — Preparing for the UK's New Data Protection Complaints Regime: Key Steps Before June 2026",
+          "url": "https://datamatters.sidley.com/2026/05/05/preparing-for-the-uks-new-data-protection-complaints-regime-key-steps-before-june-2026/",
+          "type": "secondary"
+        },
+        {
+          "name": "Mayer Brown — Preparing for the Data (Use and Access) Act 2025: Upcoming Complaints Procedure Requirement",
+          "url": "https://www.mayerbrown.com/en/insights/publications/2026/02/preparing-for-the-data-use-and-access-act-2025-upcoming-complaints-procedure-requirement",
+          "type": "secondary"
+        },
+        {
+          "name": "UK ICO — How to deal with data protection complaints (guidance, published February 12, 2026)",
+          "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/individual-rights/complaints/",
+          "type": "primary"
+        },
+        {
+          "name": "Katten — Getting Ready for the Complaints Regime Under the Data (Use and Access) Act 2025",
+          "url": "https://quickreads.ext.katten.com/post/102mnbd/getting-ready-for-the-complaints-regime-under-the-data-use-and-access-act-2025",
+          "type": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "israel-ppa-consent-opinion-catch-2026-05-06-04",
+      "priority": "medium",
+      "confidence": "moderate",
+      "title": "Israeli PPA February 2026 Final Consent Opinion: Confirmed Primary Guidance, Enforcement-Grade Status Under Amendment 13",
+      "summary": "The Israeli Privacy Protection Authority (PPA) published a final opinion in February 2026 clarifying how consent must be obtained and assessed under Israeli privacy law, after a year-long consultation process. The opinion introduces enhanced disclosure requirements in specific contexts (power imbalances, dominant market position, high-risk technologies) and operates against the backdrop of Amendment 13's dramatically expanded enforcement toolkit. Lexology reported on this opinion approximately one week ago, with analysis from Israeli firm Amar Reiter Jeanne Shochatovitch.",
+      "deep_analysis": "This item has not been previously flagged in this practice's tracking log and warrants immediate attention for Israeli-operating clients. Confidence is 'moderate' because the primary Hebrew-language source has not been independently verified by this analyst — the Lexology summary relies on an Israeli law firm's English-language analysis. The opinion clarifies several points of direct relevance to tech clients: (1) consent must be based on 'real understanding' of what data is collected, purposes, and consequences — compliance with the statutory duty to provide notice is a minimum, not always sufficient for informed consent; (2) in contexts involving power imbalances, including where the controller holds a 'dominant position', enhanced disclosure is required — directly relevant to SaaS/B2B platforms with captive user bases; (3) new technologies trigger heightened disclosure requirements presented 'clearly and prominently'; (4) unlike GDPR, Israeli law does not offer an abstract balancing test for consent — defences under Section 18 of the Protection of Privacy Law are narrowly construed and operate as justifications, not autonomous legal bases. Under Amendment 13 (in force since August 14, 2025), the PPA explicitly treats its directives and opinions as binding norms — according to Chambers & Partners 2026, 'PPA officials have stated that guidance will be enforced as if it were statutory.' This means the February 2026 consent opinion carries quasi-legislative weight and should be reviewed as if it were subordinate legislation. For AI/ML clients using Israeli-user data: the consent framework matters for model training data sourcing. For E-commerce clients with Israeli B2C operations: marketing consent flows need reassessment against the 'real understanding' standard.",
+      "sectors": [
+        "SaaS/B2B",
+        "AI/ML",
+        "E-commerce"
+      ],
+      "action_plan": {
+        "this_week": [
+          "Obtain and review the PPA's February 2026 consent opinion in Hebrew (primary source) — verify via gov.il/PPA — and commission translation/analysis if needed.",
+          "Flag to Israeli-operating clients that PPA consent guidance has been updated with enhanced standards for dominant-position controllers and new technology contexts."
+        ],
+        "this_month": [
+          "For SaaS/B2B clients with Israeli user bases: audit consent flows against the 'real understanding' standard and enhanced disclosure requirements for power-imbalance contexts.",
+          "For AI/ML clients training on Israeli-user data: review whether consent obtained pre-February 2026 meets the new standard, or whether re-consent is needed.",
+          "Assess whether any clients meet the 'dominant position' threshold that triggers heightened disclosure obligations."
+        ],
+        "three_months": [
+          "Monitor gov.il/PPA for first enforcement actions under Amendment 13 involving consent violations — these will calibrate how the PPA applies the February 2026 opinion in practice.",
+          "Monitor PPA for AI-specific guidelines (flagged as forthcoming by IAPP and Mondaq) that will intersect with the consent framework for automated processing."
+        ]
+      },
+      "sources": [
+        {
+          "name": "Lexology / Amar Reiter Jeanne Shochatovitch & Co — Israel's Privacy Authority Issues Landmark Guidance on Consent",
+          "url": "https://www.lexology.com/library/detail.aspx?g=e303b2da-16c8-4842-b742-36c5f8a99d23",
+          "type": "secondary"
+        },
+        {
+          "name": "Chambers & Partners 2026 — Data Protection & Privacy: Israel",
+          "url": "https://practiceguides.chambers.com/practice-guides/data-protection-privacy-2026/israel",
+          "type": "secondary"
+        },
+        {
+          "name": "Israeli Privacy Protection Authority (primary source — not independently verified by this analyst at URL level)",
+          "url": "https://www.gov.il/he/departments/the_privacy_protection_authority",
+          "type": "primary"
+        }
+      ]
+    }
+  ],
+  "themes": [
+    {
+      "title": "The August 2 Wall: Regulators and Industry Are Converging on One Unmovable Date",
+      "body": "Across all items today, a single date dominates: August 2, 2026. The AI Omnibus failure has not created regulatory confusion — it has clarified that August 2 is the floor, not the ceiling. Article 50 watermarking obligations apply August 2. High-risk AI system obligations apply August 2 absent a deal. The market is responding accordingly: law firm alerts published this week uniformly instruct clients to plan against the original deadline and treat Omnibus relief as upside only. This is a practice opportunity: clients who have been deferring AI compliance on Omnibus assumptions need to be brought back to baseline planning immediately."
+    },
+    {
+      "title": "Complaints-Handling as the New Compliance Frontier: UK DUAA Joins a Broader Pattern",
+      "body": "The UK DUAA June 19 complaints regime joins a broader regulatory pattern of formalizing and individualizing data subject complaint rights at the controller level. This is not merely procedural — it creates documented evidence trails that regulators can use in enforcement, and it shifts the first line of accountability from regulators to controllers. For practices advising SaaS and E-commerce clients, this represents a shift from 'privacy notice compliance' to 'operational complaints infrastructure.' The 44-day runway is short for clients with no existing framework."
+    },
+    {
+      "title": "Israeli Regulatory Maturation: PPA Operating as a Quasi-Legislative Body",
+      "body": "The PPA's February 2026 consent opinion, combined with the Chambers 2026 confirmation that PPA guidance is treated as binding by the Authority itself, signals that Israeli privacy regulation is entering a new phase. The PPA is no longer a registry-based regulator — it is an active enforcement agency issuing substantive guidance that it treats as statutory. For a practice with Israeli-operating clients, this requires monitoring PPA publications with the same rigor applied to EU DPA opinions."
+    }
+  ],
+  "calendar": [
+    {
+      "date": "2026-05-11",
+      "event": "EDPB 119th Plenary Meeting (remote) — agenda not yet published; watch for LLM/GenAI good practices document and anonymisation sprint team update",
+      "authority": "EDPB",
+      "sectors": [
+        "AI/ML",
+        "SaaS/B2B",
+        "Health Tech"
+      ]
+    },
+    {
+      "date": "2026-05-13",
+      "event": "AI Omnibus trilogue (third political session) — Cypriot Presidency attempt to close file; key sticking point is Annex I conformity assessment architecture",
+      "authority": "European Parliament / Council of EU / European Commission",
+      "sectors": [
+        "AI/ML",
+        "Health Tech",
+        "SaaS/B2B"
+      ]
+    },
+    {
+      "date": "2026-05-26",
+      "event": "Dutch AP ADM Explanation Consultation closes — verify at autoriteitpersoonsgegevens.nl",
+      "authority": "Dutch Autoriteit Persoonsgegevens",
+      "sectors": [
+        "SaaS/B2B",
+        "AI/ML",
+        "E-commerce"
+      ]
+    },
+    {
+      "date": "Early June 2026",
+      "event": "EU AI Act Article 50 Watermarking Code of Practice — final version expected (European Commission confirmed 'beginning of June' target)",
+      "authority": "European Commission / AI Office",
+      "sectors": [
+        "AI/ML",
+        "SaaS/B2B",
+        "E-commerce"
+      ]
+    },
+    {
+      "date": "2026-06-08-09",
+      "event": "EDPB 120th Plenary Meeting — likely venue for DPIA template, further anonymisation sprint output, potential LLM/GenAI good practices adoption if not May 11",
+      "authority": "EDPB",
+      "sectors": [
+        "AI/ML",
+        "SaaS/B2B",
+        "Health Tech"
+      ]
+    },
+    {
+      "date": "2026-06-09",
+      "event": "EDPB DPIA Template Consultation closes",
+      "authority": "EDPB",
+      "sectors": [
+        "SaaS/B2B",
+        "AI/ML",
+        "Health Tech",
+        "E-commerce"
+      ]
+    },
+    {
+      "date": "2026-06-12",
+      "event": "CNIL three-month window for pixel enforcement closes — monitor CNIL sanctions page for first post-deadline enforcement action",
+      "authority": "CNIL (France)",
+      "sectors": [
+        "E-commerce",
+        "Health Tech",
+        "SaaS/B2B"
+      ]
+    },
+    {
+      "date": "2026-06-19",
+      "event": "UK DUAA mandatory data protection complaints procedure goes live — all UK data controllers must have formal process operational",
+      "authority": "ICO (UK) / DUAA Section 103",
+      "sectors": [
+        "SaaS/B2B",
+        "E-commerce",
+        "Health Tech"
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "event": "EDPB Scientific Research Guidelines (1/2026) public consultation closes",
+      "authority": "EDPB",
+      "sectors": [
+        "Health Tech",
+        "AI/ML"
+      ]
+    },
+    {
+      "date": "2026-06-30",
+      "event": "Cypriot Council Presidency ends — if Omnibus not closed, Lithuanian Presidency takes over July 1",
+      "authority": "Council of the EU",
+      "sectors": [
+        "AI/ML",
+        "Health Tech",
+        "SaaS/B2B"
+      ]
+    },
+    {
+      "date": "2026-08-02",
+      "event": "EU AI Act: high-risk system obligations (Annex III), Article 50 transparency/watermarking, Article 49 registration database — ALL apply as originally enacted unless Omnibus formally adopted and published before this date",
+      "authority": "EU AI Office / European Commission",
+      "sectors": [
+        "AI/ML",
+        "Health Tech",
+        "SaaS/B2B",
+        "E-commerce"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "event": "Italian Garante pixel enforcement six-month window closes (GU publication confirmed April 29, 2026) — compliance deadline for Italian website operators",
+      "authority": "Garante (Italy)",
+      "sectors": [
+        "E-commerce",
+        "Health Tech",
+        "SaaS/B2B"
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "event": "EDPB 121st Plenary — primary candidate venue for Anonymisation Guidelines publication (sprint team summer 2026 target)",
+      "authority": "EDPB",
+      "sectors": [
+        "AI/ML",
+        "Health Tech",
+        "SaaS/B2B"
+      ]
+    }
+  ],
+  "client_messages": [
+    {
+      "for": "AI/ML product clients",
+      "message": "The May 13 EU trilogue is a decisive moment — if it fails, August 2 compliance is mandatory with no extension. Begin Article 50 watermarking preparation now and do not defer on high-risk AI classification."
+    },
+    {
+      "for": "SaaS/B2B clients with UK operations",
+      "message": "The UK DUAA mandatory data protection complaints process goes live June 19 — 44 days away. Every UK data controller needs a formal complaints procedure, updated privacy notice, and trained staff in place by that date. No exemptions."
+    },
+    {
+      "for": "E-commerce clients using AI-generated content",
+      "message": "The EU Article 50 watermarking rules apply August 2 regardless of any EU legislative developments — if your platform generates or deploys AI content (images, video, text, audio), you need a compliance plan in place before the final Code of Practice publishes in June."
+    },
+    {
+      "for": "Israeli-operating clients",
+      "message": "The Israeli PPA published a final consent opinion in February 2026 with enhanced standards — particularly for platforms with dominant market positions or that use new technologies. This guidance is treated as binding by the PPA. Your consent flows need a review against this updated standard."
+    }
+  ],
+  "tracking_summary": {
+    "items_reported_this_run": [
+      "omnibus-ai-trilogue-may13-2026-05-06-01",
+      "ai-act-watermark-cop-final-approach-2026-05-06-02",
+      "uk-duaa-complaints-regime-2026-05-06-03",
+      "israel-ppa-consent-opinion-catch-2026-05-06-04"
+    ],
+    "ongoing_to_track": [
+      "CRITICAL — May 13 trilogue: Watch for outcome immediately. If deal: track Parliament/Council formal endorsement + OJ publication race before August 2. If no deal: prepare client alerts for August 2 as hard deadline. Cypriot Presidency closes June 30 — Lithuanian Presidency takes over July 1 if needed. Key sticking point remains Annex I conformity assessment for AI in regulated products (MDR, IVDR, Machinery Regulation).",
+      "EDPB 119th Plenary May 11: Agenda not yet published. Watch for LLM/GenAI good practices document (discussed at 118th plenary April 15-16 under agenda item B.2.2) — if adopted, this will be a significant AI/SaaS item. Also watch for anonymisation sprint team interim update.",
+      "EU AI Act Article 50 Watermarking Code of Practice: Final expected 'beginning of June 2026' per Commission. Working groups meeting through May 2026. Monitor digital-strategy.ec.europa.eu for publication. Upon publication, issue client alert immediately.",
+      "UK DUAA complaints regime (June 19, 2026): 44 days to deadline. No further monitoring needed for substantive developments — ICO guidance already published February 12, 2026. Focus on client implementation support.",
+      "Israeli PPA consent opinion (February 2026): Obtain primary Hebrew source via gov.il/PPA to verify and confirm details. Monitor PPA for first enforcement actions under Amendment 13 involving consent violations. Monitor for AI-specific guidelines.",
+      "Garante pixel enforcement + CNIL June 12 window: CNIL three-month window closes June 12 — approximately 37 days away. Monitor CNIL sanctions page at cnil.fr for first post-deadline pixel-related enforcement. Italian October 28 deadline continues running.",
+      "EDPB DPIA template consultation: Closes June 9, 2026. No new developments. Continue monitoring edpb.europa.eu.",
+      "EDPB scientific research guidelines consultation: Closes June 25, 2026. No new developments.",
+      "EDPB anonymisation sprint team: Summer 2026 completion. September 17 plenary (121st) primary venue. Critical for AI training and health research clients.",
+      "Dutch AP ADM Explanation consultation: Closes May 26, 2026. Monitor autoriteitpersoonsgegevens.nl for final guidance H2 2026.",
+      "UK DUAA adequacy risk: DUAA's divergence from EU GDPR (ADM, cookie consent, scientific research) creates ongoing EU adequacy review risk. Monitor European Commission for formal adequacy review announcement. No new developments today.",
+      "FTC Surveillance Pricing: Monitor FTC enforcement actions page for first surveillance pricing enforcement. Monitor California AB 2564 progress.",
+      "EDPB 2026 CEF Transparency Action (25 DPAs): No interim signal. Expected H2 2026 EDPB report. CNIL continues to list transparency as a 2026 enforcement priority.",
+      "EDPB joint guidelines on AI Act / GDPR interplay: Confirmed in 2025 Annual Report as targeted for adoption in 2026. Not contingent on Omnibus. Monitor edpb.europa.eu for publication — critical for AI/ML clients.",
+      "Israeli PPA DPO guidance (draft): Monitor for finalization — PPA draft guidance on DPO obligations under Amendment 13 expected to be finalized in 2026. Relevant for tech clients that process sensitive data at scale in Israel.",
+      "EDPB LLM/GenAI good practices: Discussed at 118th plenary April 15-16, 2026 (agenda item B.2.2). No published outcome yet. Watch 119th plenary May 11 for adoption or further discussion."
+    ]
+  }
+}
